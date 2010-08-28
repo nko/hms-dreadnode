@@ -4,64 +4,18 @@
 <title>HMS Dreadnode</title>
 
 <link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="gameboard.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/gameboard.js"></script>
 
 </head>
 
 <body>
 
-	<div class="gameboard" id="target_board">
-		<div id="headers">
-			<div class="rownum"></div><div>A</div><div>B</div><div>C</div><div>D</div><div>E</div><div>F</div><div>G</div><div>H</div><div>I</div><div>J</div><div>K</div><div>L</div><div>M</div><div>N</div><div>O</div>
-		</div>
-		<div class="row" rel="r1">
-			<div class="rownum">1</div><div rel="A1"></div><div rel="B1"></div><div rel="C1"></div><div rel="D1"></div><div rel="E1"></div><div rel="F1"></div><div rel="G1"></div><div rel="H1"></div><div rel="I1"></div><div rel="J1"></div><div rel="K1"></div><div rel="L1"></div><div rel="M1"></div><div rel="N1"></div><div rel="O1"></div>
-		</div>	
-		<div class="row" rel="r2">
-			<div class="rownum">2</div><div rel="A2"></div><div rel="B2"></div><div rel="C2"></div><div rel="D2"></div><div rel="E2"></div><div rel="F2"></div><div rel="G2"></div><div rel="H2"></div><div rel="I2"></div><div rel="J2"></div><div rel="K2"></div><div rel="L2"></div><div rel="M2"></div><div rel="N2"></div><div rel="O2"></div>
-		</div>	
-		<div class="row" rel="r3">
-			<div class="rownum">3</div><div rel="A3"></div><div rel="B3"></div><div rel="C3"></div><div rel="D3"></div><div rel="E3"></div><div rel="F3"></div><div rel="G3"></div><div rel="H3"></div><div rel="I3"></div><div rel="J3"></div><div rel="K3"></div><div rel="L3"></div><div rel="M3"></div><div rel="N3"></div><div rel="O3"></div>
-		</div>	
-		<div class="row" rel="r4">
-			<div class="rownum">4</div><div rel="A4"></div><div rel="B4"></div><div rel="C4"></div><div rel="D4"></div><div rel="E4"></div><div rel="F4"></div><div rel="G4"></div><div rel="H4"></div><div rel="I4"></div><div rel="J4"></div><div rel="K4"></div><div rel="L4"></div><div rel="M4"></div><div rel="N4"></div><div rel="O4"></div>
-		</div>	
-		<div class="row" rel="r5">
-			<div class="rownum">5</div><div rel="A5"></div><div rel="B5"></div><div rel="C5"></div><div rel="D5"></div><div rel="E5"></div><div rel="F5"></div><div rel="G5"></div><div rel="H5"></div><div rel="I5"></div><div rel="J5"></div><div rel="K5"></div><div rel="L5"></div><div rel="M5"></div><div rel="N5"></div><div rel="O5"></div>
-		</div>	
-		<div class="row" rel="r6">
-			<div class="rownum">6</div><div rel="A6"></div><div rel="B6"></div><div rel="C6"></div><div rel="D6"></div><div rel="E6"></div><div rel="F6"></div><div rel="G6"></div><div rel="H6"></div><div rel="I6"></div><div rel="J6"></div><div rel="K6"></div><div rel="L6"></div><div rel="M6"></div><div rel="N6"></div><div rel="O6"></div>
-		</div>	
-		<div class="row" rel="r7">
-			<div class="rownum">7</div><div rel="A7"></div><div rel="B7"></div><div rel="C7"></div><div rel="D7"></div><div rel="E7"></div><div rel="F7"></div><div rel="G7"></div><div rel="H7"></div><div rel="I7"></div><div rel="J7"></div><div rel="K7"></div><div rel="L7"></div><div rel="M7"></div><div rel="N7"></div><div rel="O7"></div>
-		</div>	
-		<div class="row" rel="r8">
-			<div class="rownum">8</div><div rel="A8"></div><div rel="B8"></div><div rel="C8"></div><div rel="D8"></div><div rel="E8"></div><div rel="F8"></div><div rel="G8"></div><div rel="H8"></div><div rel="I8"></div><div rel="J8"></div><div rel="K8"></div><div rel="L8"></div><div rel="M8"></div><div rel="N8"></div><div rel="O8"></div>
-		</div>	
-		<div class="row" rel="r9">
-			<div class="rownum">9</div><div rel="A9"></div><div rel="B9"></div><div rel="C9"></div><div rel="D9"></div><div rel="E9"></div><div rel="F9"></div><div rel="G9"></div><div rel="H9"></div><div rel="I9"></div><div rel="J9"></div><div rel="K9"></div><div rel="L9"></div><div rel="M9"></div><div rel="N9"></div><div rel="O9"></div>
-		</div>	
-		<div class="row" rel="r10">
-			<div class="rownum">10</div><div rel="A10"></div><div rel="B10"></div><div rel="C10"></div><div rel="D10"></div><div rel="E10"></div><div rel="F10"></div><div rel="G10"></div><div rel="H10"></div><div rel="I10"></div><div rel="J10"></div><div rel="K10"></div><div rel="L10"></div><div rel="M10"></div><div rel="N10"></div><div rel="O10"></div>
-		</div>	
-		<div class="row" rel="r11">
-			<div class="rownum">11</div><div rel="A11"></div><div rel="B11"></div><div rel="C11"></div><div rel="D11"></div><div rel="E11"></div><div rel="F11"></div><div rel="G11"></div><div rel="H11"></div><div rel="I11"></div><div rel="J11"></div><div rel="K11"></div><div rel="L11"></div><div rel="M11"></div><div rel="N11"></div><div rel="O11"></div>
-		</div>	
-		<div class="row" rel="r12">
-			<div class="rownum">12</div><div rel="A12"></div><div rel="B12"></div><div rel="C12"></div><div rel="D12"></div><div rel="E12"></div><div rel="F12"></div><div rel="G12"></div><div rel="H12"></div><div rel="I12"></div><div rel="J12"></div><div rel="K12"></div><div rel="L12"></div><div rel="M12"></div><div rel="N12"></div><div rel="O12"></div>
-		</div>	
-		<div class="row" rel="r13">
-			<div class="rownum">13</div><div rel="A13"></div><div rel="B13"></div><div rel="C13"></div><div rel="D13"></div><div rel="E13"></div><div rel="F13"></div><div rel="G13"></div><div rel="H13"></div><div rel="I13"></div><div rel="J13"></div><div rel="K13"></div><div rel="L13"></div><div rel="M13"></div><div rel="N13"></div><div rel="O13"></div>
-		</div>	
-		<div class="row" rel="r14">
-			<div class="rownum">14</div><div rel="A14"></div><div rel="B14"></div><div rel="C14"></div><div rel="D14"></div><div rel="E14"></div><div rel="F14"></div><div rel="G14"></div><div rel="H14"></div><div rel="I14"></div><div rel="J14"></div><div rel="K14"></div><div rel="L14"></div><div rel="M14"></div><div rel="N14"></div><div rel="O14"></div>
-		</div>	
-		<div class="row" rel="r15">
-			<div class="rownum">15</div><div rel="A15"></div><div rel="B15"></div><div rel="C15"></div><div rel="D15"></div><div rel="E15"></div><div rel="F15"></div><div rel="G15"></div><div rel="H15"></div><div rel="I15"></div><div rel="J15"></div><div rel="K15"></div><div rel="L15"></div><div rel="M15"></div><div rel="N15"></div><div rel="O15"></div>
-		</div>	
-	</div>
-	<div id="my_board">
-	</div>
+	<div class="gameboard" id="target_board"></div>
+	
+	<hr />
+	
+	<div class="gameboard" id="my_board"></div>
 
 
 

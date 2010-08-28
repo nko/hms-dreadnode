@@ -36,11 +36,14 @@ img {
 
 /* gameboard */
 
-.gameboard { background-color:#000; width:514px; height:514px; }
+.gameboard { background-color:#000; width:514px; height:514px; cursor:default; }
 	.gameboard div { background-color:#006699; margin:0px 2px 0px 0px; float:left; width:30px; height:30px; }
 	.gameboard #headers { padding-top:2px; }
 	.gameboard #headers,
 	.gameboard .row { background-color:transparent; margin-top:2px; float:none; width:100%; height:30px; }
+		.gameboard .row a { display:block; width:30px; height:30px; cursor:crosshair; background:url("../images/peghole.png") 50% 50% no-repeat; }
+			.gameboard .row a.hit { background-image:url("../images/hitpeg.png"); }
+			.gameboard .row a:hover { background-color:#0099CC; }
 		.gameboard #headers div,
-		.gameboard .rownum { color:#fff; font-size:15px; font-weight:bold; text-align:center; line-height:30px; }
-		.gameboard .rownum { margin-left:2px; }
+		.gameboard .rowlet { color:#fff; font-size:15px; font-weight:bold; text-align:center; line-height:30px; }
+		.gameboard .rowlet { margin-left:2px; background-image:none; }
