@@ -15,7 +15,8 @@ dreadnode.configure(function() {
   dreadnode.use(connect.staticProvider(__dirname+"/public"));
 });
 
-// Express Routes
+// <Express Routes>
+// For now, / will be a pretty placeholder
 dreadnode.get("/", function(req, res) {
   res.render("index.jade", {
     locals: {
@@ -23,6 +24,15 @@ dreadnode.get("/", function(req, res) {
     }
   });
 });
+
+dreadnode.get("/game", function(req, res) {
+  res.render("game.jade", {
+    locals: {
+      title: "HMS Dreadnode BETA"
+    }
+  });
+});
+// </Express Routes>
 
 // Socket.IO
 var io = io.listen(dreadnode);
