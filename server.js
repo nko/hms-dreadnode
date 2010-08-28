@@ -35,33 +35,66 @@ dreadnode.get("/game", function(req, res) {
 });
 // </Express Routes>
 
+// Gamestate manager
+function GameManager() {
+  this.users = new Array();
+}
+
+GameManager.prototype = new process.EventEmitter();
+GameManager.prototype.addUser = function(user) {
+  // Bail if the username already exists
+  if (this.users.indexOf(user) !== -1) {
+    return;
+  }
+
+  this.users.push(user);
+  this.emit("newuser");
+}
+
+GameManager.prototype.getUsers = function() {
+  return this.users;
+}
+
+manager = new GameManager();
+manager.on("newuser", function () {
+  console.log(sys.inspect(this.getUsers()));
+});
+
 // Socket.IO
 var io = io.listen(dreadnode);
 io.on("connection", function(client) {
+
+  manager.on("newuser", function () {
+    userlist = {type: "userlist", msg: manager.getUsers()};
+    client.send(JSON.stringify(userlist));
+  });
+
   console.log("Socket.IO Client Connected");
   client.broadcast("New user connected. Welcome");
 
   client.on("message", function(message) {
     console.log("Incoming message: " + sys.inspect(message));
 
-    var response = '{ "response" : "Your message was garbage" }';
+    var response = {type: response, msg: "Your message was garbage"};
     try {
       message = JSON.parse(message);
       switch (message.type) {
         case "chat":
-          response = '{ "response" : "Received your chat message" }';
+          response.msg = "Received your chat message";
         break;
         case "username":
-          response = '{ "response" : "Received your username" }';
+          response.msg = "Received your username";
+          manager.addUser(message.msg);
         break;
         default:
-          response = '{ "response" : "What the hell did you send?" }';
+          response.msg = "What the hell did you send?";
       }
 
     } catch (e) {
-      console.log("Couldn't parse message: " + message);
+      console.log("Couldn't parse message: " + sys.inspect(message));
+      console.log(sys.inspect(e));
     }
-    client.send(response);
+    client.send(JSON.stringify(response));
   });
 
   client.on("disconnect", function() {
