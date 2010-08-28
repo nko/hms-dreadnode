@@ -18,13 +18,14 @@ img {
   left: 0;
   width: 100%;
 }
-#chatterbox {
+#username, #chatterbox {
+  display: block;
   width: 22em;
   background: white;
   background: rgba(255,255,255,0.6);
   font-size: inherit;
   padding: 1em;
-  margin: 0;
+  margin: 2px;
   border: 1px solid black;
   outline-width: 0;
   clear: both;
@@ -33,6 +34,10 @@ img {
   box-shadow:inset 0 0 10px black;
 }
 
+#beta {
+  font-size: 3em;
+  color: red;
+}
 
 /* gameboard */
 
