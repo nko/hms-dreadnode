@@ -1,4 +1,5 @@
 h1= title
+#beta BETALPHA
 p Welcome to the crazy party boat, the #{title}. We are a team in the 2010 Node Knockout competition.
 p Follow our development progress at 
   a(href="http://twitter.com/dreadnode", title="Follow us on Twitter") @dreadnode
@@ -6,3 +7,10 @@ p Follow our development progress at
 p Please vote for us:
   a(href="http://nodeknockout.com/teams/hms-dreadnode", title="Vote Dreadnode")
     img(src="http://nodeknockout.com/images/voteko.png")
+form(id="chatform")
+  input(type="text", id="username", tabindex="1", placeholder="username")
+  input(type="text", id="chatterbox", tabindex="2", placeholder="chat")
+script(src="/js/socket.io.js")
+script
+  | io.setPath("/io/");
+script(src="/js/chat.js")

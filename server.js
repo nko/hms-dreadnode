@@ -28,7 +28,7 @@ dreadnode.get("/", function(req, res) {
 dreadnode.get("/game", function(req, res) {
   res.render("game.jade", {
     locals: {
-      title: "HMS Dreadnode BETA"
+      title: "HMS Dreadnode"
     }
   });
 });
