@@ -17,7 +17,11 @@ dreadnode.configure(function() {
 
 // Express Routes
 dreadnode.get("/", function(req, res) {
-  res.sendfile("public/index.html");
+  res.render("index.jade", {
+    locals: {
+      title: "HMS Dreadnode"
+    }
+  });
 });
 
 // Socket.IO
