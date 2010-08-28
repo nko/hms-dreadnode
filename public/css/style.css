@@ -9,6 +9,9 @@ body {
 p {
   width: 28em;
 }
+img {
+  vertical-align: middle;
+}
 
 
 
@@ -22,4 +25,3 @@ p {
 		.gameboard #headers div,
 		.gameboard .rownum { color:#fff; font-size:15px; font-weight:bold; text-align:center; line-height:30px; }
 		.gameboard .rownum { margin-left:2px; }
-
