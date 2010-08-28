@@ -32,6 +32,13 @@ var console = console || {
   socket.on("message", function(message) {
     try {
       message = JSON.parse(message);
+
+      if (message.type === "no") {
+        mediaplayer.pause();
+        mediaplayer.currentTime = 0;
+
+        mediaplayer.play();
+      }
     } catch (e) {
       console.error(message);
       return;
@@ -42,7 +49,8 @@ var console = console || {
   var chatform = document.getElementById("chatform");
   var handlemaker = document.getElementById("username");
   var chatterbox = document.getElementById("chatterbox");
-
+  var mediaplayer = document.getElementById("player");
+  
   if (chatform.addEventListener) {
     chatform.addEventListener("submit", submitty, "false");
   } else if (chatform.attachEvent) {

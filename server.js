@@ -84,7 +84,15 @@ io.on("connection", function(client) {
         break;
         case "username":
           response.msg = "Received your username";
-          manager.addUser(message.msg);
+
+          // Hehehehehe.
+          if(message.msg === "no") {
+            response.type = "no";
+            response.msg = "NOOOOOOOOOOO!";
+          } else {
+            manager.addUser(message.msg);
+          }
+
         break;
         default:
           response.msg = "What the hell did you send?";
