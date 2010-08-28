@@ -41,9 +41,9 @@ img {
 
 /* gameboard */
 
-.gameboard { background-color:#003854; width:514px; height:514px; cursor:default; }
+.gameboard { background-color:#003854; width:514px; height:514px; cursor:default; position:relative; overflow:hidden; }
+	.gameboard #piece_position_marker { position:absolute; width:1px; height:1px; margin:0px; padding:0px; background-color:#CFCFCF; display:none; }
 	.gameboard div { background-color:#006699; margin:0px 2px 0px 0px; float:left; width:30px; height:30px; }
-	.gameboard #headers { padding-top:2px; }
 	.gameboard #headers,
 	.gameboard .row { background-color:transparent; margin-top:2px; float:none; width:100%; height:30px; }
 		.gameboard .row a { display:block; width:30px; height:30px; background:url("../images/peghole.png") 50% 50% no-repeat; }
@@ -57,21 +57,35 @@ img {
 
 /* ships */
 
-#pieces { width:514px; height:200px; background-color:#003854; position:relative; }
+#pieces_bin { width:514px; height:200px; background-color:#003854; position:relative; overflow:hidden; }
 
-.piece { position:absolute; background-position:50% 50%; background-repeat:no-repeat; }
+.piece { position:absolute; background-position:3px 3px; background-repeat:no-repeat; overflow:hidden; }
 .piece.moveable { cursor:move; }
-#titanic.horz { width:158px; height:62px; background-image:url("../images/titanic-horz.png"); }
-#titanic.vert { width:62px; height:158px; background-image:url("../images/titanic-vert.png"); }
-#submarine.horz { width:126px; height:30px; background-image:url("../images/submarine-horz.png"); }
-#submarine.vert { width:30px; height:126px; background-image:url("../images/submarine-vert.png"); }
-#warship.horz { width:158px; height:30px; background-image:url("../images/warship-horz.png"); }
-#warship.vert { width:30px; height:158px; background-image:url("../images/warship-vert.png"); }
-#pirateship.horz { width:94px; height:30px; background-image:url("../images/pirateship-horz.png"); }
-#pirateship.vert { width:30px; height:94px; background-image:url("../images/pirateship-vert.png"); }
-#tugboat.horz { width:62px; height:30px; background-image:url("../images/tugboat-horz.png"); }
-#tugboat.vert { width:30px; height:62px; background-image:url("../images/tugboat-vert.png"); }
-#liferaft { width:30px; height:30px; background-image:url("../images/liferaft.png"); }
+	.piece .hitpeg { float:left; width:30px; height:30px; margin:0px 2px 2px 0px; background:url("../images/hitpeg.png") 50% 50% no-repeat; }
+	.piece .hitpeg.hidden { visibility:hidden; }
+
+#titanic, #titanic * { background-color:transparent; }
+#titanic.horz { width:160px; height:62px; background-image:url("../images/titanic-horz.png"); }
+#titanic.vert { width:64px; height:158px; background-image:url("../images/titanic-vert.png"); }
+
+#submarine, #submarine * { background-color:transparent; }
+#submarine.horz { width:128px; height:30px; background-image:url("../images/submarine-horz.png"); }
+#submarine.vert { width:32px; height:126px; background-image:url("../images/submarine-vert.png"); }
+
+#warship, #warship * { background-color:transparent; }
+#warship.horz { width:160px; height:30px; background-image:url("../images/warship-horz.png"); }
+#warship.vert { width:32px; height:158px; background-image:url("../images/warship-vert.png"); }
+
+#pirateship, #pirateship * { background-color:transparent; }
+#pirateship.horz { width:96px; height:30px; background-image:url("../images/pirateship-horz.png"); }
+#pirateship.vert { width:32px; height:94px; background-image:url("../images/pirateship-vert.png"); }
+
+#tugboat, #tugboat * { background-color:transparent; }
+#tugboat.horz { width:64px; height:30px; background-image:url("../images/tugboat-horz.png"); }
+#tugboat.vert { width:32px; height:62px; background-image:url("../images/tugboat-vert.png"); }
+
+#liferaft, #liferaft * { background-color:transparent; }
+#liferaft { width:32px; height:30px; background-image:url("../images/liferaft.png"); }
 
 
 
