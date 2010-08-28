@@ -52,7 +52,7 @@ var console = console || {
   function submitty(event) {
     event.preventDefault();
 
-    if (!handlemaker.value.length) {
+    if (handlemaker.value.length) {
       handlemaker.username = handlemaker.value;
       if ("placeholder" in handlemaker) {
         handlemaker.placeholder = handlemaker.username;
@@ -62,6 +62,7 @@ var console = console || {
         msg : handlemaker.value
       }));
       handlemaker.value = "";
+      handlemaker.blur();
     }
     if (chatterbox.value.length) {
       socket.send(JSON.stringify({
@@ -69,7 +70,10 @@ var console = console || {
         msg : chatterbox.value
       }));
       chatterbox.value = "";
+      chatterbox.blur();
     }
+
+    this.blur();
     return false;
   }
 
