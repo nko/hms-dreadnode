@@ -69,7 +69,7 @@ io.on("connection", function(client) {
 
     } catch (e) {
       console.log("Couldn't parse message: " + sys.inspect(message));
-      console.log(sys.inspect(e));
+      //console.log(sys.inspect(e));
     }
     client.send(JSON.stringify(response));
   });
