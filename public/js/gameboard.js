@@ -43,6 +43,12 @@
 			}
 		});
 		
+		$("#warship").css("left","100px");
+		$("#submarine").css("left","200px");
+		$("#pirateship").css("left","300px");
+		$("#tugboat").css("left","400px");
+		$("#liferaft").css("left","480px");
+		
 	});
 		  
 })(window,jQuery);
