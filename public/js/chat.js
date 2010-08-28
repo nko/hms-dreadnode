@@ -23,7 +23,7 @@ var console = console || {
   socket.connect();
   socket.on("connect", function() {
     socket.send("Yar!");
-    console.log("Reconnecting.");
+    console.log("Connecting.");
   });
   socket.on("disconnect", function() {
     console.log("Reconnecting.");
@@ -36,6 +36,7 @@ var console = console || {
       console.error(message);
       return;
     }
+    console.log(message);
   });
 
   var chatform = document.getElementById("chatform");
