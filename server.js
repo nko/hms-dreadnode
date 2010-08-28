@@ -24,5 +24,18 @@ dreadnode.get("/", function(req, res) {
   });
 });
 
+// Socket.IO
+var io = io.listen(dreadnode);
+io.on("connection", function(client) {
+	console.log("Socket.IO Client Connected");
+  client.broadcast("New user connected. Welcome");
+	client.on("message", function(message) {
+		client.send('{ "response" : "OK, thanks. Got it." }');
+	});
+	client.on("disconnect", function() {
+		console.log("Socket.IO Client Disconnected");
+	});
+});
+
 dreadnode.listen(port);
 console.log("Dreadnode server listening on :"+port);
