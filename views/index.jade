@@ -6,9 +6,9 @@ p Follow our development progress at
 p Please vote for us:
   a(href="http://nodeknockout.com/teams/hms-dreadnode", title="Vote Dreadnode")
     img(src="http://nodeknockout.com/images/voteko.png")
-form
-  input(type="text", id="chatterbox", tabindex="1")
+form(id="chatform")
+  input(type="text", id="chatterbox", tabindex="1", placeholder="chat")
 script(src="/js/socket.io.js")
 script
-  | io.setPath('/io/');
+  | io.setPath("/io/");
 script(src="/js/chat.js")
