@@ -14,7 +14,7 @@ var console = console || {
   console.log(io);
 
   if (!io) {
-    console.warn("I've got nothing.")
+    console.warn("I've got nothing.");
     return false;
   }
 
@@ -40,6 +40,7 @@ var console = console || {
   });
 
   var chatform = document.getElementById("chatform");
+  var handlemaker = document.getElementById("username");
   var chatterbox = document.getElementById("chatterbox");
 
   if (chatform.addEventListener) {
@@ -50,7 +51,16 @@ var console = console || {
 
   function submitty(event) {
     event.preventDefault();
-    socket.send(JSON.stringify({ chat : chatterbox.value }));
+    if (!handlemaker.username) {
+      handlemaker.username = handlemaker.value;
+      if ("placeholder" in handlemaker) {
+        handlemaker.placeholder = handlemaker.username; 
+      }
+      socket.send(JSON.stringify({ username : handlemaker.value }));
+    }
+    if (chatterbox.value.length) {
+      socket.send(JSON.stringify({ chat : chatterbox.value }));
+    }
     chatterbox.value = "";
     return false;
   }
