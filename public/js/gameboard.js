@@ -1,7 +1,5 @@
 (function(global,$){
 
-	
-
 	var $board = $("<div></div>"),
 		row_names = "ABCDEFGHIJKLMNO".split(""),
 		$row, $cell, $target_board, $my_board
@@ -42,13 +40,7 @@
 				$et.addClass("hit");
 			}
 		});
-		
-		$("#warship").css("left","100px");
-		$("#submarine").css("left","200px");
-		$("#pirateship").css("left","300px");
-		$("#tugboat").css("left","400px");
-		$("#liferaft").css("left","480px");
-		
+				
 	});
 		  
 })(window,jQuery);
