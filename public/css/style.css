@@ -9,3 +9,6 @@ body {
 p {
   width: 28em;
 }
+img {
+  vertical-align: middle;
+}
