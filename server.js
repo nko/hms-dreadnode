@@ -1,8 +1,10 @@
-// npm dependencies
 var sys       = require("sys"),
+    // npm dependencies
     connect   = require("connect"),
     express   = require("express"),
-    io        = require("socket.io");
+    io        = require("socket.io"),
+    // local
+    gm   = require(__dirname+"/lib/gamemanager");
 
 var dreadnode = express.createServer(),
     port      = parseInt(process.env.PORT) || 80;
@@ -16,8 +18,7 @@ dreadnode.configure(function() {
   dreadnode.use(connect.staticProvider(__dirname+"/public"));
 });
 
-// <Express Routes>
-// For now, / will be a pretty placeholder
+// Express Routes
 dreadnode.get("/", function(req, res) {
   res.render("index.jade", {
     locals: {
@@ -25,7 +26,6 @@ dreadnode.get("/", function(req, res) {
     }
   });
 });
-
 dreadnode.get("/game", function(req, res) {
   res.render("game.jade", {
     locals: {
@@ -33,32 +33,9 @@ dreadnode.get("/game", function(req, res) {
     }
   });
 });
-// </Express Routes>
 
-// Gamestate manager
-function GameManager() {
-  this.users = new Array();
-}
-
-GameManager.prototype = new process.EventEmitter();
-GameManager.prototype.addUser = function(user) {
-  // Bail if the username already exists
-  if (this.users.indexOf(user) !== -1) {
-    return;
-  }
-
-  this.users.push(user);
-  this.emit("newuser");
-}
-
-GameManager.prototype.getUsers = function() {
-  return this.users;
-}
-
-manager = new GameManager();
-manager.on("newuser", function () {
-  console.log(sys.inspect(this.getUsers()));
-});
+// Game Manager
+var manager = gm.createGameManager();
 
 // Socket.IO
 var io = io.listen(dreadnode);
@@ -92,7 +69,6 @@ io.on("connection", function(client) {
           } else {
             manager.addUser(message.msg);
           }
-
         break;
         default:
           response.msg = "What the hell did you send?";
