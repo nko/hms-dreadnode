@@ -11,6 +11,7 @@ p {
 }
 img {
   vertical-align: middle;
+  border: 0;
 }
 .chatform {
   position: fixed;
