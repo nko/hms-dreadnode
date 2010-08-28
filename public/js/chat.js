@@ -51,17 +51,25 @@ var console = console || {
 
   function submitty(event) {
     event.preventDefault();
-    if (!handlemaker.username) {
+
+    if (!handlemaker.value.length) {
       handlemaker.username = handlemaker.value;
       if ("placeholder" in handlemaker) {
-        handlemaker.placeholder = handlemaker.username; 
+        handlemaker.placeholder = handlemaker.username;
       }
-      socket.send(JSON.stringify({ username : handlemaker.value }));
+      socket.send(JSON.stringify({
+        type : "username",
+        msg : handlemaker.value
+      }));
+      handlemaker.value = "";
     }
     if (chatterbox.value.length) {
-      socket.send(JSON.stringify({ chat : chatterbox.value }));
+      socket.send(JSON.stringify({
+        type : "chat",
+        msg : chatterbox.value
+      }));
+      chatterbox.value = "";
     }
-    chatterbox.value = "";
     return false;
   }
 

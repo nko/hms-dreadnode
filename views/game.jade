@@ -10,6 +10,7 @@ p Please vote for us:
 form(id="chatform")
   input(type="text", id="username", tabindex="1", placeholder="username")
   input(type="text", id="chatterbox", tabindex="2", placeholder="chat")
+  input(type="submit")
 script(src="/js/socket.io.js")
 script
   | io.setPath("/io/");

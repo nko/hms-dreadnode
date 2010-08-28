@@ -40,6 +40,7 @@ io.on("connection", function(client) {
 	console.log("Socket.IO Client Connected");
   client.broadcast("New user connected. Welcome");
 	client.on("message", function(message) {
+    console.log(message);
 		client.send('{ "response" : "OK, thanks. Got it." }');
 	});
 	client.on("disconnect", function() {
