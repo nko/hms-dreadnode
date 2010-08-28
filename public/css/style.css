@@ -1,0 +1,11 @@
+body {
+  padding: 50px;
+  font: 18px "IM Fell English", Cambria, serif;
+  background-color: white;
+  color: black;
+  background-image: url("../images/hms-dreadnode.gif");
+  background-size: 100%;
+}
+p {
+  width: 28em;
+}
