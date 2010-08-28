@@ -1,5 +1,6 @@
 // npm dependencies
-var connect   = require("connect"),
+var sys       = require("sys"),
+    connect   = require("connect"),
     express   = require("express"),
     io        = require("socket.io");
 
@@ -37,15 +38,35 @@ dreadnode.get("/game", function(req, res) {
 // Socket.IO
 var io = io.listen(dreadnode);
 io.on("connection", function(client) {
-	console.log("Socket.IO Client Connected");
+  console.log("Socket.IO Client Connected");
   client.broadcast("New user connected. Welcome");
-	client.on("message", function(message) {
-    console.log(message);
-		client.send('{ "response" : "OK, thanks. Got it." }');
-	});
-	client.on("disconnect", function() {
-		console.log("Socket.IO Client Disconnected");
-	});
+
+  client.on("message", function(message) {
+    console.log("Incoming message: " + sys.inspect(message));
+
+    var response = '{ "response" : "Your message was garbage" }';
+    try {
+      message = JSON.parse(message);
+      switch (message.type) {
+        case "chat":
+          response = '{ "response" : "Received your chat message" }';
+        break;
+        case "username":
+          response = '{ "response" : "Received your username" }';
+        break;
+        default:
+          response = '{ "response" : "What the hell did you send?" }';
+      }
+
+    } catch (e) {
+      console.log("Couldn't parse message: " + message);
+    }
+    client.send(response);
+  });
+
+  client.on("disconnect", function() {
+    console.log("Socket.IO Client Disconnected");
+  });
 });
 
 dreadnode.listen(port);
