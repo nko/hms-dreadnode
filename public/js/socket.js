@@ -22,14 +22,6 @@
     }
   }
 
-  // Gargamello
-  if (!("Message" in dread)) {
-    dread.Message = function(type, msg) {
-      this.type = type;
-      this.msg = msg;
-    }
-  }
-
   // Watership Down
   var dispatch = {
     auth : function(message) {
@@ -98,8 +90,17 @@
     return false;
   });
 
+
+  // Gargamello
+  if (!("Message" in dread)) {
+    dread.Message = function(type, msg) {
+      this.type = type;
+      this.msg = msg;
+    }
+  }
+
   dread.fire = function(shot) {
-    $.socket.send(JSON.stringify(new Message("shot", shot)));
+    $.socket.send(JSON.stringify(new dread.Message("shot", shot)));
   };
 
 })(window,jQuery);
