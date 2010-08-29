@@ -35,10 +35,15 @@
       }
     },
     destroyed : function(message) {
+      var msg = message.msg;
+      console.log(msg);
+      global.APPVIEW.next_page();
+    },
+    gamestart : function(message) {
        var msg = message.msg;
        console.log(msg);
-      global.APPVIEW.next_page();
-     },
+      alert(msg)
+    },
     // not implemented
     gravatar : function(message) {
       var msg = message.msg || "";
@@ -83,8 +88,8 @@
     yourturn : function(message) {
       var msg = message.msg || "";
       console.log(msg);
-      $("#yourturn").slideDown();
-	    global.Target_Gameboard.set_your_turn(true);
+      $("#yourturn").show();
+      global.Target_Gameboard.set_your_turn(true);
     }
   };
 
