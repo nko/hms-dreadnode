@@ -78,7 +78,7 @@
     var Message = dread.Message || function(){};
     var ships;
     if (ships = My_Gameboard.get_ships()) {
-      alert(JSON.stringify(ships));
+      //alert(JSON.stringify(ships));
       $.socket.send(JSON.stringify(new Message("ready", ships)));
     }
     else {
