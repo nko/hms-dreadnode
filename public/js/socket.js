@@ -64,7 +64,7 @@
       var msg = message.msg || "";
       console.log("msg");
       $("#yourturn").slideDown();
-      alert(msg);
+      //alert(msg);
     }
   };
 
@@ -102,6 +102,9 @@
       alert("All ships need to be placed on the board!");
     }
     return false;
+  });
+  $("#yourturn").live("click", function(e) {
+    $(this).hide();
   });
 
 
