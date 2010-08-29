@@ -189,7 +189,7 @@ h3 {
 	background-color: rgba(0,0,0,.2);
 	padding: 10px;
 	margin: 10px;
-	border: 4px double rgba(0, 69, 183, 0.4);
+	border: 4px double rgba(255,255, 255, 0.2);
 	border-bottom-left-radius: 5px 5px;
 	border-bottom-right-radius: 5px 5px;
 	border-top-left-radius: 5px 5px;
@@ -267,7 +267,7 @@ table {
 	font-family: "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
 	font-size: 1em;
 	margin: 0 auto;
-	border: 4px double rgba(0, 69, 183, 0.4);
+	border: 4px double rgba(255,255, 255, 0.2);
 	border-bottom-left-radius: 5px 5px;
 	border-bottom-right-radius: 5px 5px;
 	border-top-left-radius: 5px 5px;
@@ -427,12 +427,27 @@ img {
   color: red;
 }
 #yourturn {
-  position: fixed;
-  top: 50%;
-  right: 50%;
-  width: 400px;
-  height: 120px;
-  background-image: url("/images/event-yourturn.png");
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-left: -230px;
+	margin-top: -90px;
+ 	width: 400px;
+	height: 120px;
+	border: 4px double rgba(255,255, 255, 0.2);
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	box-shadow: rgba(0,0,0, .8) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, .8) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, .8) 0px 0px 8px;
+	background-image: url("../images/event-yourturn.png");
+	background-color: #0045b7;
+	background-color: rgba(0,69,183,.9);
+	background-repeat: no-repeat;	
+	padding: 30px;
+	background-position: 50% 50%;
   /*display: none;*/
 }
 
