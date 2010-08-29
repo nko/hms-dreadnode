@@ -128,7 +128,7 @@
 			
 			var $et = $(e.target), $tmp;
 			if ($et.is("a") && !$et.hasClass("miss") && !$et.hasClass("hit")) {
-				var cell_id = $et.parent().attr("rel").split(":"),
+				var cell_id = $et.parent().attr("rel").split(":")/*,
 					hit = false;
 				
 				global.$my_board.find(".piece").each(function(){
@@ -139,7 +139,9 @@
 						return false;
 					}
 				});
-				if (!hit) $et.addClass("miss");
+				if (!hit) $et.addClass("miss");*/
+				
+				// TODO: this is where we need to wire up the socket sending a "fire" click
 			}
 		});
 	};
@@ -153,6 +155,18 @@
 		$piece_position_marker = $("<div></div>").attr("id","piece_position_marker");
 		$piece_position_marker.appendTo(global.$my_board);
 		my_board_offset = global.$my_board.offset();
+	};
+	
+	global.My_Gameboard.get_ships = function() {
+		var $pieces = global.$my_board.find(".piece"), ret = {};
+		if ($pieces.length < 6) {
+			return false;
+		}
+		$pieces.each(function(){
+			var $this = $(this);
+			ret[$this.attr("id")] = {top_left:$this.data("top_left"), bottom_right:$this.data("bottom_right")};
+		});
+		return ret;
 	};
 		  
 })(window,jQuery);

@@ -94,18 +94,26 @@ $(document).ready(function(){
 		  </div>
 		</article>
 		<script type="text/javascript" class="init">
-		  $("#readyBtn").submit(function(e) {
+		$("#readyBtn").click(function(e) {
 			e.preventDefault();
-			// serialized the placed ship positions
-			var message = {
-			  type : "ready",
-			  msg : {
-				"ship1" : {}
-				// , etc.
-			  }
-			};
-			$.socket.send(JSON.stringify(message));
-		  });
+			
+			var ships;
+			if (ships = My_Gameboard.get_ships()) {
+				alert(JSON.stringify(ships));
+				return;
+			
+				// serialized the placed ship positions
+				var message = {
+				  type : "ready",
+				  msg : ships
+				};
+				$.socket.send(JSON.stringify(message));
+			}
+			else {
+				alert("All ships need to be placed on the board!");
+			}
+			return false;
+		});
 		</script>
 	</div>
 </body>

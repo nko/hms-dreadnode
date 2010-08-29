@@ -7,16 +7,28 @@
     error: function() { }
   };
 
+  // Smerf
+  global.dread = global.dread || {};
+  var dread = global.dread;
+
+  // Gargamello
+  if (!("Message" in dread)) {
+    dread.Message = function(type, msg) {
+      this.type = type;
+      this.msg = msg;
+    }
+  }
+
+  // Watership Down
   var dispatch = {
     auth : function(message) {
       var status = message.status || "failed";
       var msg = message.msg || "?";
       if (status === "success") {
-        $("#login_content").toggle();
-        $("#gameboard_content").show();
+        APPVIEW.next_page();
       } else {
         alert(message.msg);
-        $("#username").focus();
+        $("#uname").focus();
       }
     },
     // Nooooooooooooooo!!!
