@@ -37,7 +37,8 @@
     destroyed : function(message) {
        var msg = message.msg;
        console.log(msg);
-       // TODO: send user to results page : FAILURE
+       // TODO: flag loss : FAILURE
+      global.APPVIEW.next_page();
      },
     // not implemented
     gravatar : function(message) {
@@ -78,7 +79,8 @@
     win : function(message) {
       var msg = message.msg;
       console.log(msg);
-      // TODO: send user to results page : WINNER WINNER CHICKEN DINNER
+      // TODO: flag win : WINNER WINNER CHICKEN DINNER
+      global.APPVIEW.next_page();
     },
     yourturn : function(message) {
       var msg = message.msg || "";
