@@ -19,6 +19,7 @@ body {
 	background-color: #0b8afe;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0392fe), color-stop(0.74, #00338d));
 	text-shadow: rgba(255,255,255,.2) 0.1em 0.1em  0;
+	
 }
 .multiplebgs body {
 	background-image:
@@ -75,7 +76,9 @@ p {
 	margin-bottom: 1em;
 }
 a {
+	color: #FFB515;
 	outline: 0;
+	text-decoration: underline;
 }
 
 /* buttons */
@@ -174,8 +177,7 @@ h3 {
 }
 .mod  p {
 	text-align: justify;
-	margin: 0 auto;
-	width: 300px;
+	margin: 0 auto 1em auto;
 	font-family: "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
 }
 
@@ -186,6 +188,7 @@ h3 {
 	background-image: url(../images/bkgd-mod.png);
 	background-color: rgba(0,0,0,.2);
 	padding: 10px;
+	margin: 10px;
 	border: 4px double rgba(0, 69, 183, 0.4);
 	border-bottom-left-radius: 5px 5px;
 	border-bottom-right-radius: 5px 5px;
@@ -261,12 +264,124 @@ input:focus, textarea:focus {
 }
 
 table {
+	font-family: "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
+	font-size: 1em;
 	margin: 0 auto;
+	border: 4px double rgba(0, 69, 183, 0.4);
+	border-bottom-left-radius: 5px 5px;
+	border-bottom-right-radius: 5px 5px;
+	border-top-left-radius: 5px 5px;
+	border-top-right-radius: 5px 5px;
+	box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+}
+
+th {
+	text-align: center;
+	padding: 10px;
+	background-color: rgba(255,255,255,.2);
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+	
+}
+
+td {
+	text-align: left;
+	padding: 10px;
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+	
+}
+
+td + td  { 
+	text-align: center;
 }
 
 td img {
 	vertical-align: middle;
 }
+caption {
+	display: none;
+}
+
+.mod .mod .mod {
+	font-size: .8em;
+}
+.mod .mod .mod h3:after {
+	font-size: 1em;
+}
+.mod .mod .mod h3:before {
+	font-size: 1em;
+}
+.results_content {
+	height: 1%;
+}
+.results_content:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+.scoreboard {
+	float: left;
+	width: 350px;
+}
+.results_image {
+	float: right;
+	width: 400px;
+}
+.results_image img {
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+}
+
+.alwaysbeclosing {
+	clear: both;
+		text-align: center;
+}
+
+.alwaysbeclosing button {
+margin: 10px;
+}
+
+/* handle */
+
+.handle {
+	background-image: url(../images/bkgd-mod.png);
+	display: inline-block;
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	font-family: "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
+	
+}
+.handle img {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	-webkit-mask-box-image: url(../images/mugshot-mask.png) 0 0 0 0 stretch stretch;
+	border-radius: 3px;
+	border: solid rgba(255,255,255,.4) 2px;
+}
+.handle h4 {
+	text-transform: uppercase;
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+}
+.handle p {
+	font-size: .8em;
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+	width: 200px;
+	overflow: display;
+}
+
+.gameboard {
+	margin: 0 auto;
+}
+
 
 /*body {
   padding: 50px;
