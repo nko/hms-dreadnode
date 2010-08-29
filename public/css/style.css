@@ -1,4 +1,4 @@
-/* template */
+/* from Chris: template */
 
 html {
 	height: 100%;
@@ -62,7 +62,7 @@ article {
 	
 }
 
-p{
+p {
 	margin-bottom: 1em;
 }
 a {
@@ -119,7 +119,6 @@ button {
 	padding: 5px 15px 6px;
 	position: relative;
 	text-decoration: none;
-	xtext-shadow: rgba(0, 0, 0, 0.246094) 0px -1px 1px;
 	width: auto;
 }
 
@@ -140,6 +139,19 @@ button {
 	width: 250px;
 }
 
+label, input {
+	display: block;
+	margin: 30px auto;
+}
+
+h3 {
+	
+}
+
+#login_content {
+	text-align: center;
+	padding-bottom: 1000px;
+}
 
 /*body {
   padding: 50px;

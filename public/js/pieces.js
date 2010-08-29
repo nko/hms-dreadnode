@@ -100,7 +100,7 @@
 		piece_offset_y = 0;
 	}
 		  
-	$(document).ready(function(){
+	global.Pieces = function(){
 		global.$pieces_bin = $("#pieces_bin");
 		
 		$("#warship").css("left","100px");
@@ -124,6 +124,6 @@
 			}
 		});
 
-	});
+	};
 		  
 })(window,jQuery);

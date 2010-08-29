@@ -100,39 +100,29 @@
 	
 	row_names.unshift("");
 	
-	$(document).ready(function(){
-		for (var row_idx=0; row_idx<=15; row_idx++) {
-			$row = $("<div></div>");
+	for (var row_idx=0; row_idx<=15; row_idx++) {
+		$row = $("<div></div>");
+		
+		if (row_idx==0) $row.attr("id","headers");
+		else $row.addClass("row").attr("rel",row_names[row_idx]);
+		
+		for (var col_idx=0; col_idx<=15; col_idx++) {
+			$cell = $("<div></div>");
 			
-			if (row_idx==0) $row.attr("id","headers");
-			else $row.addClass("row").attr("rel",row_names[row_idx]);
+			if (col_idx==0) $cell.addClass("rowlet").text(row_names[row_idx]);
+			else if (row_idx==0 && col_idx>0) $cell.text(col_idx);
+			else if (row_idx>0 && col_idx>0) $cell.attr("rel",row_names[row_idx]+":"+col_idx).html("<a></a>");
 			
-			for (var col_idx=0; col_idx<=15; col_idx++) {
-				$cell = $("<div></div>");
-				
-				if (col_idx==0) $cell.addClass("rowlet").text(row_names[row_idx]);
-				else if (row_idx==0 && col_idx>0) $cell.text(col_idx);
-				else if (row_idx>0 && col_idx>0) $cell.attr("rel",row_names[row_idx]+":"+col_idx).html("<a></a>");
-				
-				$row.append($cell);
-			}
-			$board.append($row);
+			$row.append($cell);
 		}
-		
-		var $contents = $board.children("#headers, .row");
-		
+		$board.append($row);
+	}
+	
+	var $contents = $board.children("#headers, .row");
+	
+	global.Target_Gameboard = function() {
 		global.$target_board = $("#target_board");
 		global.$target_board.append($contents.clone());
-		
-		global.$my_board = $("#my_board");
-		global.$my_board.append($contents.clone());
-		global.$my_board.find_valid_piece_location = find_valid_piece_location;
-		global.$my_board.hide_piece_location_marker = hide_piece_location_marker;
-		
-		$piece_position_marker = $("<div></div>").attr("id","piece_position_marker");
-		$piece_position_marker.appendTo(global.$my_board);
-		my_board_offset = global.$my_board.offset();
-		
 		global.$target_board.click(function(e){
 			$(".piece").removeClass("moveable");
 			
@@ -152,7 +142,17 @@
 				if (!hit) $et.addClass("miss");
 			}
 		});
-				
-	});
+	};
+		
+	global.My_Gameboard = function() {
+		global.$my_board = $("#my_board");
+		global.$my_board.append($contents.clone());
+		global.$my_board.find_valid_piece_location = find_valid_piece_location;
+		global.$my_board.hide_piece_location_marker = hide_piece_location_marker;
+		
+		$piece_position_marker = $("<div></div>").attr("id","piece_position_marker");
+		$piece_position_marker.appendTo(global.$my_board);
+		my_board_offset = global.$my_board.offset();
+	};
 		  
 })(window,jQuery);
