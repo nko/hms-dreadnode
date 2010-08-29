@@ -89,6 +89,12 @@
 	  global.APPVIEW.win_state = true;
       global.APPVIEW.next_page();
     },
+    userlist : function(message) {
+      var userlist = message.msg || [];
+      console.log(JSON.stringify(userlist));
+      alert(JSON.stringify(userlist));
+      // TODO: Update player listing. 
+    },
     yourturn : function(message) {
       var msg = message.msg || "";
       console.log(msg);
