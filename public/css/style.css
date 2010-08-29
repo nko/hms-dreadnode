@@ -19,14 +19,14 @@
 html {
 	height: 100%;
 	min-width: 900px;
-	
+		min-height: 1000px;
 }
 body {
 	border-top: 3px solid rgba(0,51,153,.8);
 	background-color: #0b8afe;
 	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0392fe), color-stop(0.74, #00338d));
 	text-shadow: rgba(255,255,255,.2) 0.1em 0.1em  0;
-	
+
 }
 .multiplebgs body {
 	background-color: #0b8afe;
@@ -76,6 +76,7 @@ header h2 {
 }
 
 article {
+	xwidth: 1260px;
 	width: 957px;
 	margin: 0 auto;
 	
@@ -431,7 +432,7 @@ margin: 10px;
 }
 
 #gameboard_content article {
-	width: 1260px;
+	xwidth: 1260px;
 }
 
 #gameboard_frame {
@@ -448,7 +449,7 @@ section.myboard {
 	float: right;
 }
 
-.myboard  {
+.xmyboard  {
 		position: absoulte;
 		top: 0;
 		right: 0;
