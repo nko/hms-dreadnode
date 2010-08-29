@@ -88,7 +88,7 @@ io.on("connection", function(client) {
 
     } catch (e) {
       console.log("Couldn't parse message: " + sys.inspect(message));
-      //console.log(sys.inspect(e));
+      console.log(sys.inspect(e));
     }
     client.send(JSON.stringify(response));
   });
@@ -97,12 +97,12 @@ io.on("connection", function(client) {
     console.log("Socket.IO Client Disconnected");
   });
 
-  manager.on("newuser", function (connection) {
-    var game = this;
-    console.log(sys.inspect(this, connection));
-    userlist = { type: "userlist", msg: manager.getUsers() };
-    client.send(JSON.stringify(userlist));
-  });
+  // manager.on("newuser", function (connection) {
+  //   var game = this;
+  //   // console.log(sys.inspect(this, connection));
+  //   userlist = { type: "userlist", msg: manager.getUsers() };
+  //   client.send(JSON.stringify(userlist));
+  // });
 
   manager.on("winner", function (connection) {
     var game = this;
