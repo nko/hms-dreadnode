@@ -1,5 +1,6 @@
 (function(global,$){
-	var page_stack = ["index.html","login.html","gameselect.html","gamesetup.html","gameboard.html","results.html"],
+  // pulled "gameselect.html" temporarily
+	var page_stack = ["index.html","login.html","gamesetup.html","gameboard.html","results.html"],
 		page_cache = {},
 		current_page = "index.html",
 		$index_content,

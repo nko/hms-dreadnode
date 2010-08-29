@@ -29,10 +29,13 @@
         <del title="We'll figure it for ourselves.">and password</del>,
         which we pass onto those bird boys while wearing blindfolds and smoking cigars.
       </p>
-			
+
 			<form id="login">
 			  <label for="uname">Username</label>
         <input type="text" id="uname">
+
+			  <label for="gravatar">Email Address (for Gravatar)</label>
+        <input type="text" id="gravatar">
 
         <!-- Don't need no stinkin' passwords
 			  <label for="pword">Password</label>
@@ -48,11 +51,12 @@
   <script type="text/javascript" class="init">
 		$("#login").submit(function(e) {
 			e.preventDefault();
-			var message = {
-			  type : "username",
-			  msg : $("#uname").val()
-			};
-			$.socket.send(JSON.stringify(message));
+      var Message = dread.Message || function(){};
+			var username = $("#uname").val();
+			$.socket.send(JSON.stringify(new Message("username", username)));
+
+      var email = $("#gravatar").val();
+      $.socket.send(JSON.stringify(new Message("gravatar", email)));
 			return false;
 		});
   </script>
