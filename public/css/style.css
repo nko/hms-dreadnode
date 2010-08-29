@@ -139,6 +139,19 @@ button {
 	width: 250px;
 }
 
+label, input {
+	display: block;
+	margin: 30px auto;
+}
+
+h3 {
+	
+}
+
+#login_content {
+	text-align: center;
+	padding-bottom: 1000px;
+}
 
 /*body {
   padding: 50px;
