@@ -92,8 +92,19 @@
     userlist : function(message) {
       var userlist = message.msg || [];
       console.log(JSON.stringify(userlist));
-      alert(JSON.stringify(userlist));
-      // TODO: Update player listing. 
+	  
+	  var $player_list = $("#players_list"), $tr, $td;
+	  if ($player_list.length) {
+		  $player_list.find("tbody").empty();
+		  for (var count=0; count<userlist.length; count++) {
+			  $tr = $("<tr></tr>");
+			  $td = $("<td></td>").text((count+1));
+			  $tr.append($td);
+			  $td = $("<td></td>").text(userlist[count]);
+			  $tr.append($td);
+			  $player_list.find("tbody").append($tr);
+		  }
+	  }
     },
     yourturn : function(message) {
       var msg = message.msg || "";
@@ -154,5 +165,5 @@
   dread.fire = function(shot) {
     $.socket.send(JSON.stringify(new dread.Message("shot", shot)));
   };
-
+  
 })(window,jQuery);
