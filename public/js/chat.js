@@ -73,18 +73,22 @@ var console = console || {
       handlemaker.blur();
     }
     if (chatterbox.value.length) {
-      $.socket.send(JSON.stringify({
-        type : "chat",
-        msg : chatterbox.value
-      }));
+      $.socket.send(chatterbox.value);
+      // $.socket.send(JSON.stringify({
+      //   type : "chat",
+      //   msg : chatterbox.value
+      // }));
       chatterbox.value = "";
       chatterbox.blur();
     }
 
-    $.socket.send(JSON.stringify({
-      type : "shot",
-      msg : "SUCK MY FIST"
-    }));
+    // $.socket.send(JSON.stringify({
+    //   type : "ready",
+    //   msg : [{top_left: "E:2", bottom_right: "E:5"},
+    //          {top_left: "F:3", bottom_right: "F:5"},
+    //          {top_left: "C:6", bottom_right: "G:6"},
+    //          {top_left: "E:7", bottom_right: "F:7"}]
+    // }));
 
     this.blur();
     return false;

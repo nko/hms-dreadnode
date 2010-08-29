@@ -1,0 +1,5 @@
+{"type":"ready","msg":[{"top_left":"E:2","bottom_right":"E:5"},{"top_left":"F:3","bottom_right":"F:5"},{"top_left":"C:6","bottom_right":"G:6"},{"top_left":"E:7","bottom_right":"F:7"}]}
+
+{"type":"ready","msg":[{"top_left":"H:10","bottom_right":"J:10"}]}
+
+{"type":"shot","msg":"H:10"}
