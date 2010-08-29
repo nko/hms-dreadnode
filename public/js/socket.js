@@ -37,7 +37,7 @@
     destroyed : function(message) {
        var msg = message.msg;
        console.log(msg);
-	   APPVIEW.next_page();
+      global.APPVIEW.next_page();
      },
     // not implemented
     gravatar : function(message) {
@@ -78,7 +78,7 @@
     win : function(message) {
       var msg = message.msg;
       console.log(msg);
-	   APPVIEW.next_page();
+      global.APPVIEW.next_page();
     },
     yourturn : function(message) {
       var msg = message.msg || "";
