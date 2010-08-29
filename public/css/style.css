@@ -62,7 +62,7 @@ article {
 	
 }
 
-p{
+p {
 	margin-bottom: 1em;
 }
 a {
@@ -119,7 +119,6 @@ button {
 	padding: 5px 15px 6px;
 	position: relative;
 	text-decoration: none;
-	xtext-shadow: rgba(0, 0, 0, 0.246094) 0px -1px 1px;
 	width: auto;
 }
 
