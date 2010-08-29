@@ -45,13 +45,14 @@
 			<section>
 		</article>
 		<script type="text/javascript" class="init">
-		$("#login").submit(function(e) {
+		$("#login").click(function(e) {
 			e.preventDefault();
 			var message = {
 			  type : "username",
 			  msg : $("#username").val()
 			};
 			$.socket.send(JSON.stringify(message));
+			return false;
 		});
 		</script>
 	</div>
