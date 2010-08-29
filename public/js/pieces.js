@@ -9,19 +9,21 @@
 	;
 		
 	function rotate_piece(e) {
-		if ($drag_piece.hasClass("vert")) {
-			$drag_piece.removeClass("vert").addClass("horz");
+		if ((+($drag_piece.attr("rel")) > 1)) {
+			if ($drag_piece.hasClass("vert")) {
+				$drag_piece.removeClass("vert").addClass("horz");
+			}
+			else {
+				$drag_piece.removeClass("horz").addClass("vert");
+			}
+			var tmp = piece_offset_x;
+			piece_offset_x = piece_offset_y;
+			piece_offset_y = tmp;
+			
+			$drag_piece.css({left:mouseX-piece_offset_x+"px",top:mouseY-piece_offset_y+"px"});
+			
+			valid_position = global.$my_board.find_valid_piece_location($drag_piece);
 		}
-		else {
-			$drag_piece.removeClass("horz").addClass("vert");
-		}
-		var tmp = piece_offset_x;
-		piece_offset_x = piece_offset_y;
-		piece_offset_y = tmp;
-		
-		$drag_piece.css({left:mouseX-piece_offset_x+"px",top:mouseY-piece_offset_y+"px"});
-		
-		valid_position = global.$my_board.find_valid_piece_location($drag_piece);
 	}
 	
 	function start_piece_drag(e) {
@@ -79,11 +81,17 @@
 		if (valid_position) {
 			$drag_piece.appendTo(global.$my_board);
 			$drag_piece.css({left:valid_position.x1+"px",top:valid_position.y1+"px"});
+			
+			var row_names = "ABCDEFGHIJKLMNO".split("");
+			$drag_piece.data("top_left",{row:valid_position.r1, row_name:row_names[valid_position.r1-1], col:valid_position.c1});
+			$drag_piece.data("bottom_right",{row:valid_position.r2, row_name:row_names[valid_position.r2-1], col:valid_position.c2});
 		}
 		else {
 			$drag_piece.appendTo(global.$pieces_bin);
 			$drag_piece.removeClass("horz").addClass("vert");
 			$drag_piece.css({left:orig_pos.left+"px",top:orig_pos.top+"px"});
+			$drag_piece.data("top_left",null);
+			$drag_piece.data("bottom_right",null);
 		}
 		
 		dragging = false;
@@ -104,7 +112,7 @@
 		var $pieces = $(".piece");
 		
 		$pieces.each(function(){
-			var $this = $(this), count = +($this.attr("rel")), $hitpeg = $this.find(".hitpeg");
+			var $this = $(this), count = +($this.attr("rel")), $hitpeg = $this.find(".peg");
 			for (var i=1; i<count; i++) {
 				$this.append($hitpeg.clone());
 			}

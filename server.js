@@ -80,7 +80,7 @@ io.on("connection", function(client) {
             response.type = "no";
             response.msg = "NOOOOOOOOOOO!";
           } else {
-            var success = manager.addUser(message.msg, client);
+            var success = manager.addUser(client, message.msg);
             if (!success) {
               response.type = "error";
               response.issue = "ufail";
@@ -97,7 +97,7 @@ io.on("connection", function(client) {
 
     } catch (e) {
       console.log("Couldn't parse message: " + sys.inspect(message));
-      //console.log(sys.inspect(e));
+      console.log(sys.inspect(e));
     }
     client.send(JSON.stringify(response));
   });

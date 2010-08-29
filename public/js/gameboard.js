@@ -77,6 +77,27 @@
 		$piece_position_marker.hide();
 	}
 	
+	function test_piece_coord($piece,row_coord,col_coord) {
+		if (typeof row_coord == "string") {
+			row_coord = row_coord.toUpperCase().charCodeAt(0) - 64;
+		}
+		var tl = $piece.data("top_left"),
+			br = $piece.data("bottom_right"),
+			cols_across = br.col - tl.col + 1,
+			rows_down = br.row - tl.row + 1,
+			peg_idx, col, row
+		;
+		for (col=tl.col; col<=br.col; col++) {
+			for (row=tl.row; row<=br.row; row++) {
+				if (row == row_coord && col == col_coord) {
+					peg_idx = ((row-tl.row) * cols_across) + (col-tl.col);
+					return $piece.find(".peg").eq(peg_idx);
+				}
+			}
+		}
+		return false;
+	}
+	
 	row_names.unshift("");
 	
 	$(document).ready(function(){
@@ -113,9 +134,22 @@
 		my_board_offset = global.$my_board.offset();
 		
 		global.$target_board.click(function(e){
-			var $et = $(e.target);
-			if ($et.is("a") && !$et.hasClass("hit")) {
-				$et.addClass("hit");
+			$(".piece").removeClass("moveable");
+			
+			var $et = $(e.target), $tmp;
+			if ($et.is("a") && !$et.hasClass("miss") && !$et.hasClass("hit")) {
+				var cell_id = $et.parent().attr("rel").split(":"),
+					hit = false;
+				
+				global.$my_board.find(".piece").each(function(){
+					if ($tmp=test_piece_coord($(this),cell_id[0],cell_id[1])) {
+						$et.addClass("hit");
+						$tmp.removeClass("hidden");
+						hit = true;
+						return false;
+					}
+				});
+				if (!hit) $et.addClass("miss");
 			}
 		});
 				
