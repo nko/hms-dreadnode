@@ -57,8 +57,8 @@
     yourturn : function(message) {
       var msg = message.msg || "";
       console.log("msg");
-      alert("msg");
-
+      $("#yourturn").slideDown();
+      alert(msg);
     }
   };
 
