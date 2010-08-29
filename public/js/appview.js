@@ -17,6 +17,10 @@
 	}
 	
 	function goto(page) {
+		if (!$index_content) {
+			setTimeout(function(){goto(page);},25);
+			return;
+		}
 		$index_content.find("*").andSelf().unbind();
 		$index_content.empty();
 		$index_content.html(page_cache[page].html);
