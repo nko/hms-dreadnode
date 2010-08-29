@@ -34,6 +34,11 @@
         $("#uname").focus();
       }
     },
+    destroyed : function(message) {
+       var msg = message.msg;
+       console.log(msg);
+       // TODO: send user to results page : FAILURE
+     },
     // not implemented
     gravatar : function(message) {
       var msg = message.msg || "";
@@ -43,13 +48,13 @@
     hit : function(message) {
       var hitLocation = message.msg;
       console.log("HIT "+hitLocation);
-	  global.Target_Gameboard.set_peg(hitLocation,true);
+	    global.Target_Gameboard.set_peg(hitLocation,true);
     },
     // peg event
     miss : function(message) {
       var missLocation = message.msg;
       console.log("MISS "+missLocation);
-	  global.Target_Gameboard.set_peg(missLocation,false);
+	    global.Target_Gameboard.set_peg(missLocation,false);
     },
     // Nooooooooooooooo!!!
     no : function() {
@@ -62,13 +67,24 @@
     ouch : function(message) {
       var ouchLocation = message.msg;
       console.log("OUCH "+ouchLocation);
-	  global.My_Gameboard.set_peg(ouchLocation);
+	    global.My_Gameboard.set_peg(ouchLocation);
+    },
+    setup : function(message) {
+      var playersState = message.msg;
+      console.log(playersState);
+      // TODO: Push player ready status to Scoreboard
+      // { jane: boolean, bob : boolean // ready }
+    },
+    win : function(message) {
+      var msg = message.msg;
+      console.log(msg);
+      // TODO: send user to results page : WINNER WINNER CHICKEN DINNER
     },
     yourturn : function(message) {
       var msg = message.msg || "";
-      console.log("msg");
+      console.log(msg);
       $("#yourturn").slideDown();
-	  global.Target_Gameboard.set_your_turn(true);
+	    global.Target_Gameboard.set_your_turn(true);
     }
   };
 
