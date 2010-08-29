@@ -11,6 +11,17 @@
   global.dread = global.dread || {};
   var dread = global.dread;
 
+  // Handle disconnects
+  if (Modernizr.sessionStorage) {
+    if (sessionStorage['username']) {
+      dread.username = sessionStorage['username'];
+      dread.game = sessionStorage['username'];
+    }
+    if (sessionStorage['game']) {
+      dread.game = sessionStorage['game'];
+    }
+  }
+
   // Gargamello
   if (!("Message" in dread)) {
     dread.Message = function(type, msg) {
@@ -46,8 +57,8 @@
     yourturn : function(message) {
       var msg = message.msg || "";
       console.log("msg");
-      alert("msg");
-
+      $("#yourturn").slideDown();
+      alert(msg);
     }
   };
 
