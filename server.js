@@ -55,15 +55,15 @@ var dispatch = {
       response.msg = "NOOOOOOOOOOO!";
     } else {
       var username = message.msg;
-      var success = manager.addUser(client, username);
-      if (success) {
+      var couldAddUser = manager.addUser(client, username);
+      if (couldAddUser["success"]) {
         response.type = "auth";
         response.status = "success";
         response.msg = "Welcome "+username;
       } else {
         response.type = "auth";
         response.status = "ufail";
-        response.msg = "Username taken";
+        response.msg = couldAddUser["reason"];
       } 
     }
     client.send(JSON.stringify(response));

@@ -37,7 +37,6 @@
     destroyed : function(message) {
        var msg = message.msg;
        console.log(msg);
-       // TODO: flag loss : FAILURE
       global.APPVIEW.next_page();
      },
     // not implemented
@@ -79,7 +78,6 @@
     win : function(message) {
       var msg = message.msg;
       console.log(msg);
-      // TODO: flag win : WINNER WINNER CHICKEN DINNER
       global.APPVIEW.next_page();
     },
     yourturn : function(message) {
