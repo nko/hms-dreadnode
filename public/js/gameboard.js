@@ -2,7 +2,8 @@
 
 	var $board = $("<div></div>"),
 		row_names = "ABCDEFGHIJKLMNO".split(""),
-		$row, $cell, $piece_position_marker, ppm_pos, my_board_offset
+		$row, $cell, $piece_position_marker, ppm_pos, my_board_offset,
+		your_turn = true
 	;
 	
 	function piece_conflicts() {
@@ -127,21 +128,9 @@
 			$(".piece").removeClass("moveable");
 			
 			var $et = $(e.target), $tmp;
-			if ($et.is("a") && !$et.hasClass("miss") && !$et.hasClass("hit")) {
-				var cell_id = $et.parent().attr("rel").split(":")/*,
-					hit = false;
-				
-				global.$my_board.find(".piece").each(function(){
-					if ($tmp=test_piece_coord($(this),cell_id[0],cell_id[1])) {
-						$et.addClass("hit");
-						$tmp.removeClass("hidden");
-						hit = true;
-						return false;
-					}
-				});
-				if (!hit) $et.addClass("miss");*/
-				
-				// TODO: this is where we need to wire up the socket sending a "fire" click
+			if (your_turn && $et.is("a") && !$et.hasClass("miss") && !$et.hasClass("hit")) {
+				var cell_id = $et.parent().attr("rel");
+				global.dread.fire(cell_id);
 			}
 		});
 	};
