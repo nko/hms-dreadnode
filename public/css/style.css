@@ -137,12 +137,12 @@ button {
 
 
 h3 {
-	font-family: "Gotham Bold", Helvetica, Arial, sans-serif;
+	font-family: "Gotham Bold", "Gill Sans", Calibri, "Trebuchet MS", Helvetica, Arial, sans-serif;
 	font-size: 2em;
 	font-weight: bold;
 	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
 	padding-bottom: 10px;
-	border-bottom: 1px solid rgba(255,255,255,.4);
+	border-bottom: 1px solid rgba(0, 69, 183, 0.2);
 	margin-bottom: 10px;
 	text-align: center;
 }
@@ -172,18 +172,28 @@ h3 {
 		text-shadow: 0 -1px 1px rgba(0,0,0,.4);
 	
 }
+.mod  p {
+	text-align: justify;
+	margin: 0 auto;
+	width: 300px;
+	font-family: "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
+}
 
 
 .mod {
 	color: #fff;
 	border-radius: 5px;
+	background-image: url(../images/bkgd-mod.png);
 	background-color: rgba(0,0,0,.2);
 	padding: 10px;
-	border-bottom: 1px solid rgba(0, 0, 0, 0.246094);
+	border: 4px double rgba(0, 69, 183, 0.4);
 	border-bottom-left-radius: 5px 5px;
 	border-bottom-right-radius: 5px 5px;
 	border-top-left-radius: 5px 5px;
 	border-top-right-radius: 5px 5px;
+	box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
 }
 .about {
 	position: relative;
@@ -191,14 +201,55 @@ h3 {
 	width: 250px;
 }
 
+#login {
+	margin-top: 30px;
+	padding: 30px;
+	background-image: url(../images/bkgd-mod.png);
+	
+	display: inline-block;
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+}
+
 label, input {
 	display: block;
 	margin: 30px auto;
+	text-align: center;
+
 }
 
-h3 {
-	
+label {
+	font-family: "Gotham Bold", "Gill Sans", Calibri, "Trebuchet MS", Helvetica, Arial, sans-serif;
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+	font-weight: bold;
+	margin: 0 0 -20px 0;
+	padding: 0;
 }
+
+input {
+	padding: 9px;
+	border: solid 1px #E5E5E5;
+	outline: 0;
+	font: normal 13px/100% Verdana, Tahoma, sans-serif;
+	width: 200px;
+	background: #FFFFFF;
+	background: -webkit-gradient(linear, left top, left 25, from(#FFFFFF), color-stop(4%, #EEEEEE), to(#FFFFFF));
+	background: -moz-linear-gradient(top, #FFFFFF, #EEEEEE 1px, #FFFFFF 25px);
+	border-radius: 5px;
+	box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-moz-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+	-webkit-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
+}
+
+input:hover, textarea:hover,
+input:focus, textarea:focus { 
+    border-color: red; 
+    box-shadow: rgba(0,0,0,.4) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0,.4) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0,.4) 0px 0px 8px;
+    }
 
 #login_content, #gameselect_content {
 	text-align: center;
