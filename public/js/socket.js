@@ -34,10 +34,22 @@
         $("#uname").focus();
       }
     },
-    // not
+    // not implemented
     gravatar : function(message) {
       var msg = message.msg || "";
       console.log("gravatar md5 "+msg);
+    },
+    // peg event
+    hit : function(message) {
+      var hitLocation = message.msg;
+      console.log("HIT "+hitLocation);
+      // TODO: pass to peg board
+    },
+    // peg event
+    miss : function(message) {
+      var missLocation = message.msg;
+      console.log("HIT "+missLocation);
+      // TODO: pass to peg board
     },
     // Nooooooooooooooo!!!
     no : function() {
@@ -46,6 +58,8 @@
         mediaplayer.play();
       }
     },
+    // peg event: ouch is - you've been hit
+    ouch : this.hit,
     yourturn : function(message) {
       var msg = message.msg || "";
       console.log("msg");
