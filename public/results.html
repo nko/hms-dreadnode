@@ -23,7 +23,7 @@
 		<article>
 			<section class="mod">
 				
-			<h3>YOU DIED OF DYSENTERY OR YOU WON!</h3>
+			<h3 id="results_status_msg">Game Over</h3>
 	
 			<section class="handle mod">
 	
@@ -67,17 +67,14 @@
 				</section>
 			
 			
-			<section class="mod results_image">
-				<!-- results-lose.jpg -->
-				<img src="images/results-win.jpg" alt="Congrats you won over XYZ, ABC, MNO, and BOB!">
-			</section>
+				<section class="mod results_image"><img src="images/blank.png" /></section>
 			
 			</section>
 			
 			
 			<section class="mod alwaysbeclosing">
 			
-				<button class="large orangellow" title="Did you lose honor to the mermaids again? Then there's only one thing to do!">Play Again!</button> 
+				<button onclick="document.location.href='/';" class="large orangellow" title="Did you lose honor to the mermaids again? Then there's only one thing to do!">Play Again!</button> 
 				
 			</section>
 	
@@ -87,5 +84,17 @@
 	</div>
 	
 	<div id="yourturn"></div>
+	
+	<script type="text/javascript" class="init">
+	if (APPVIEW.win_state === true) {
+		$(".results_image img").attr("src","images/results-win.jpg");
+		$("#results_status_msg").text("YOU WON!");
+	}
+	else if (APPVIEW.win_state === false) {
+		$(".results_image img").attr("src","images/results-lose.jpg");
+		$("#results_status_msg").text("YOU DIED OF DYSENTERY");
+	}
+	APPVIEW.win_state = null;
+	</script>
 </body>
 </html>

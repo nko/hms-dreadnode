@@ -449,13 +449,6 @@ section.myboard {
 	float: right;
 }
 
-.xmyboard  {
-		position: absoulte;
-		top: 0;
-		right: 0;
-		width: 550px;
-	
-}
 
 .gameboard_frame .gameboard_frame {
 }
