@@ -1,29 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
-<title>HMS Dreadnode</title>
+  <title>HMS Dreadnode</title>
 
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/json2.js"></script>
-<script type="text/javascript" src="js/socket.io.js"></script>
-<script type="text/javascript"> io.setPath("/io/"); </script>
-<script type="text/javascript" src="js/socket.js"></script>
-<script type="text/javascript" src="js/gameboard.js"></script>
-<script type="text/javascript" src="js/pieces.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+  <script type="text/javascript" src="js/socket.io.js"></script>
+  <script type="text/javascript"> io.setPath("/io/"); </script>
+  <script type="text/javascript" src="js/socket.js"></script>
+  <script type="text/javascript" src="js/gameboard.js"></script>
+  <script type="text/javascript" src="js/pieces.js"></script>
 
-<script type="text/javascript" class="init">
-$(document).ready(function(){
-	Target_Gameboard();
-	My_Gameboard();
-	Pieces();
-});
-</script>
+  <script type="text/javascript" class="init">
+    $(document).ready(function(){
+      Target_Gameboard();
+      My_Gameboard();
+      Pieces();
 
+      $("#readyBtn").click(function(e) {
+        e.preventDefault();
+        var Message = dread.Message || function(){};
+        var ships;
+        if (ships = My_Gameboard.get_ships()) {
+          //alert(JSON.stringify(ships));
+          $.socket.send(JSON.stringify(new Message("ready", ships)));
+        }
+        else {
+          alert("All ships need to be placed on the board!");
+        }
+        return false;
+      });
+    });
+  </script>
 </head>
-
 <body>
 	<header>
 		<h1><a href="#"><abbr title="Her Majesty's Ship">HMS</abbr> Dreadnode</a></h1>
@@ -36,85 +48,78 @@ $(document).ready(function(){
 				<a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode" target="_blank"><img width="126" height="63" src="http://nodeknockout.com/images/voteko.png" border="0" alt="Vote Node Knockout" /></a>
 			</p>
 		
-		<section class="mod timer">
-			<h3>Timer</h3>
-			<strong>:29</strong> 
-		</section>
+      <section class="mod timer">
+        <h3>Timer</h3>
+        <strong id="gametime">:29</strong>
+      </section>
 		
 			<section class="mod scoreboard">
 				<h3>Scoreboard</h3>
 				<table border="1" summary="Current game score between you and your wily opponent">
 				  <caption>
-					Current Scoreboard
+					  Current Scoreboard
 				  </caption>
 				  <tr>
-					<th scope="col">Player</th>
-					<th scope="col">Ships Left</th>
-					<th scope="col">Hits</th>
-					<th scope="col">Sunk</th>
-				
+            <th scope="col">Player</th>
+            <th scope="col">Ships Left</th>
+            <th scope="col">Hits</th>
+            <th scope="col">Sunk</th>
 				  </tr>
 				  <tr>
-					<td>Your Name</td>
-					<td>5</td>
-					<td>13</td>
-					<td>2</td>
+            <td>Your Name</td>
+            <td>5</td>
+            <td>13</td>
+            <td>2</td>
 				  </tr>
 				  <tr>
-					<td>Opponent Name</td>
-					<td>4</td>
-					<td>10</td>
-					<td>0</td>
+            <td>Opponent Name</td>
+            <td>4</td>
+            <td>10</td>
+            <td>0</td>
 				  </tr>
-	
 				</table>
 			</section>
 		
 			<section class="mod">
-			<div class="gameboard" id="target_board"></div>
+			  <div class="gameboard" id="target_board"></div>
 			<section>
 		
 			<section>
-			<div class="gameboard" id="my_board"></div>
+			  <div class="gameboard" id="my_board"></div>
 			</section>
 			
 			<section>
-			<div id="pieces_bin">
-				<div rel="10" id="titanic" class="piece vert moveable"><div class="peg hidden"></div></div>
-				<div rel="4" id="submarine" class="piece vert moveable"><div class="peg hidden"></div></div>
-				<div rel="5" id="warship" class="piece vert moveable"><div class="peg hidden"></div></div>
-				<div rel="3" id="pirateship" class="piece vert moveable"><div class="peg hidden"></div></div>
-				<div rel="2" id="tugboat" class="piece vert moveable"><div class="peg hidden"></div></div>
-				<div rel="1" id="liferaft" class="piece vert moveable"><div class="peg hidden"></div></div>
-			</div>
+        <div id="pieces_bin">
+          <div rel="10" id="titanic" class="piece vert moveable"><div class="peg hidden"></div></div>
+          <div rel="4" id="submarine" class="piece vert moveable"><div class="peg hidden"></div></div>
+          <div rel="5" id="warship" class="piece vert moveable"><div class="peg hidden"></div></div>
+          <div rel="3" id="pirateship" class="piece vert moveable"><div class="peg hidden"></div></div>
+          <div rel="2" id="tugboat" class="piece vert moveable"><div class="peg hidden"></div></div>
+          <div rel="1" id="liferaft" class="piece vert moveable"><div class="peg hidden"></div></div>
+        </div>
 			</section>
 			
 		  <div>
-			<button id="readyBtn" type="submit" class="orangellow large">Ready</button>
+			  <button id="readyBtn" type="submit" class="orangellow large">Ready</button>
 		  </div>
 		</article>
-		<script type="text/javascript" class="init">
-		$("#readyBtn").click(function(e) {
-			e.preventDefault();
-			
-			var ships;
-			if (ships = My_Gameboard.get_ships()) {
-				alert(JSON.stringify(ships));
-				return;
-			
-				// serialized the placed ship positions
-				var message = {
-				  type : "ready",
-				  msg : ships
-				};
-				$.socket.send(JSON.stringify(message));
-			}
-			else {
-				alert("All ships need to be placed on the board!");
-			}
-			return false;
-		});
-		</script>
+
+    <script type="text/javascript" class="init">
+      $("#readyBtn").click(function(e) {
+        e.preventDefault();
+        var Message = dread.Message || function(){};
+        var ships;
+        if (ships = My_Gameboard.get_ships()) {
+          //alert(JSON.stringify(ships));
+          $.socket.send(JSON.stringify(new Message("ready", ships)));
+        }
+        else {
+          alert("All ships need to be placed on the board!");
+        }
+        return false;
+      });
+    </script>
+    <!-- needs to be in div for appview -->
 	</div>
 </body>
 </html>

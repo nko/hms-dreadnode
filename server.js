@@ -43,6 +43,40 @@ var messenger = {
   }
 };
 
+var dispatch = {
+  chat : function() {
+    response.msg = "Received your chat message";
+  },
+
+  username : function(client, message) {
+    if(message.msg === "no") {
+      response.type = "no";
+      response.msg = "NOOOOOOOOOOO!";
+    } else {
+      var username = message.msg;
+      var success = manager.addUser(client, username);
+      if (success) {
+        response.type = "auth";
+        response.status = "success";
+        response.msg = "Welcome "+username;
+      } else {
+        response.type = "auth";
+        response.status = "ufail";
+        response.msg = "Username taken";
+      } 
+    }
+    client.send(JSON.stringify(response));
+  },
+
+  ready : function(client, message) {
+    manager.placeShips(client, message.msg);
+  },
+
+  shot : function(client, message) {
+    manager.fireShot(client, message.msg);
+  }
+};
+
 // Socket.IO
 var io = io.listen(dreadnode);
 io.on("connection", function(client) {
@@ -53,65 +87,18 @@ io.on("connection", function(client) {
     console.log("Incoming message: " + sys.inspect(message));
     try {
       message = JSON.parse(message);
-      switch (message.type) {
-
-        // Chat message
-        case "chat":
-          response.msg = "Received your chat message";
-          break;
-
-        // Authentication message
-        case "username":
-          response.msg = "Received your username";
-          // Hehehehehe.
-          if(message.msg === "no") {
-            response.type = "no";
-            response.msg = "NOOOOOOOOOOO!";
-          } else {
-            var username = message.msg;
-            var success = manager.addUser(client, username);
-            if (success) {
-              response.type = "auth";
-              response.status = "success";
-              response.msg = "Welcome "+username;
-            } else {
-              response.type = "auth";
-              response.status = "ufail";
-              response.msg = "Username taken";
-            }
-          }
-          break;
-
-        // Ship placement message
-        case "ready":
-          manager.placeShips(client, message.msg);
-          break;
-
-        // Shot fired message
-        case "shot":
-            manager.fireShot(client, message.msg);
-          break;
-        default:
-          response.msg = "What the hell did you send?";
+      if ("type" in message) {
+        dispatch[message.type](client, message)
       }
-
     } catch (e) {
       console.log("Couldn't parse message: " + sys.inspect(message));
       console.log(sys.inspect(e));
     }
-    client.send(JSON.stringify(response));
   });
 
   client.on("disconnect", function() {
     console.log("Socket.IO Client Disconnected");
   });
-
-  // manager.on("newuser", function (connection) {
-  //   var game = this;
-  //   // console.log(sys.inspect(this, connection));
-  //   userlist = { type: "userlist", msg: manager.getUsers() };
-  //   client.send(JSON.stringify(userlist));
-  // });
 
   manager.on("winner", function (connection) {
     var game = this;

@@ -31,12 +31,22 @@
         $("#uname").focus();
       }
     },
+    // not
+    gravatar : function(message) {
+      var msg = message.msg || "";
+      console.log("gravatar md5 "+msg);
+    },
     // Nooooooooooooooo!!!
     no : function() {
       var mediaplayer = $("#player")[0];
       if ("play" in mediaplayer) {
         mediaplayer.play();
       }
+    },
+    yourturn : function(message) {
+      var msg = message.msg || "";
+      console.log("msg");
+      alert("msg");
     }
   };
 
