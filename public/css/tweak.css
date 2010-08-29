@@ -3,9 +3,9 @@
   margin: auto;
   text-align: right;
 }
-.gameboard, #pieces_bin {
-  margin: auto;
-}
-#username {
+.gameboard,
+#pieces_bin,
+#username,
+#readyBtn {
   margin: auto;
 }

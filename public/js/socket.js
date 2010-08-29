@@ -7,7 +7,7 @@
     error: function() { }
   };
 
-  var messenger = {
+  var dispatch = {
     auth : function(message) {
       var status = message.status || "failed";
       var msg = message.msg || "?";
@@ -32,8 +32,7 @@
 	$.socket = new $.io.Socket(null);
   $.socket.connect();
   $.socket.on("connect", function() {
-    $.socket.send("Yar!");
-    console.log("Connecting.");
+    console.log("IO Connected.");
   });
   $.socket.on("disconnect", function() {
     console.log("Reconnecting.");
@@ -43,25 +42,34 @@
     try {
       message = JSON.parse(message);
       if ("type" in message) {
-        console.log(message.type, messenger[message.type]);
-        messenger[message.type](message);
+        dispatch[message.type](message);
       }
     } catch (e) {
-      console.error(message);
-      return;
+      console.warn(message);
     }
-    console.log(message);
   });
 
-  // Form Handlers
+  // Event Handlers
   $("#login").submit(function(e) {
     e.preventDefault();
-    console.log(this);
     var message = {
       type : "username",
       msg : $("#username").val()
     };
     $.socket.send(JSON.stringify(message));
-  })
+  });
+
+  $("#dispatch").submit(function(e) {
+    e.preventDefault();
+    // serialized the placed ship positions
+    var message = {
+      type : "ready",
+      msg : {
+        "ship1" : {}
+        // , etc.
+      }
+    };
+    $.socket.send(JSON.stringify(message));
+  });
 
 })(window,jQuery);
