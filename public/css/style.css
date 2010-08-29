@@ -1,5 +1,12 @@
 /* from Chris: template */
 
+@font-face {
+	font-family: 'DigitaldreamRegular';
+	src: url('digitaldream-webfont.eot');
+	src: local('☺'), url('digitaldream-webfont.woff') format('woff'), url('digitaldream-webfont.ttf') format('truetype'), url('digitaldream-webfont.svg#webfontNyC6zGdk') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
 
 @font-face {
 	font-family: 'SeeingStarsRegular';
@@ -22,6 +29,8 @@ body {
 	
 }
 .multiplebgs body {
+	background-color: #0b8afe;
+	
 	background-image:
 		url(../images/bkgd-top.png),
 		url(../images/bkgd-bottom.png),
@@ -332,6 +341,7 @@ caption {
 	width: 400px;
 }
 .results_image img {
+	-webkit-mask-box-image: url(../images/mugshot-mask.png) 0 0 0 0 stretch stretch;
 	border-radius: 5px;
 	box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
 	-moz-box-shadow: rgba(0,0,0, .4) 0px 0px 8px;
@@ -378,10 +388,101 @@ margin: 10px;
 	overflow: display;
 }
 
-.gameboard {
-	margin: 0 auto;
+
+
+
+.timer {
+	float: right;
+	padding: 0 0 10px 0;
+	text-align: center;
 }
 
+.timer h3 {
+	font-size: .8em;
+	border-bottom: 1px solid rgba(0, 69, 183, 0.2);
+	text-align: center;
+	padding: 10px;
+	background-color: rgba(255,255,255,.2);
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+	font-family: "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
+}
+.timer h3:after {
+	content: '';
+}
+.timer h3:before {
+	content: '';
+}
+#gametime {
+	font-family: DigitaldreamRegular,  "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+}
+#gameboard_content .scoreboard {
+	float: right;
+}
+.timer {
+	height: 1%;
+}
+.timer:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+
+#gameboard_content article {
+	width: 1260px;
+}
+
+#gameboard_frame {
+	clear: both;
+	position: relative;
+	background: red;
+	
+}
+
+section.targetboard {
+float: left;
+}
+section.myboard {
+	float: right;
+}
+
+.myboard  {
+		position: absoulte;
+		top: 0;
+		right: 0;
+		width: 550px;
+	
+}
+
+.gameboard_frame .gameboard_frame {
+}
+
+.gameboard {
+}
+
+#target_board {
+
+}
+#my_board {
+}
+.pieces_bin_frame {
+	clear: both;
+	margin-left: 343px;
+	display: inline-block;
+}
+
+div.button {
+	text-align: center;
+}
+#headers div, .rowlet {
+	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
+	background-image: url(../images/bkgd-mod.png) !important;
+	
+	font-family: "Lucida Sans Typewriter", Consolas, Courier, "Andale Mono", Monaco, monospace;
+	
+}
 
 /*body {
   padding: 50px;
@@ -472,7 +573,7 @@ img {
 
 /* ships */
 
-#pieces_bin { width:514px; height:200px; background-color:#003854; position:relative; overflow:hidden; }
+#pieces_bin { width:514px; height:200px; background-color:#003854; position:relative; overflow:hidden;}
 
 .piece { position:absolute; background-position:3px 3px; background-repeat:no-repeat; overflow:hidden; }
 .piece.moveable { cursor:move; }
