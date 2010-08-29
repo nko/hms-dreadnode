@@ -50,6 +50,7 @@ img {
 		.gameboard .row a { display:block; width:30px; height:30px; background:url("../images/peghole.png") 50% 50% no-repeat; }
 		#target_board .row a { cursor:crosshair; }
 			.gameboard .row a.hit { background-image:url("../images/hitpeg.png"); cursor:not-allowed; }
+			.gameboard .row a.miss { background-image:url("../images/misspeg.png"); cursor:not-allowed; }
 			#target_board .row a:hover { background-color:#0099CC; }
 		.gameboard #headers div,
 		.gameboard .rowlet { color:#fff; font-size:15px; font-weight:bold; text-align:center; line-height:30px; }
@@ -62,8 +63,8 @@ img {
 
 .piece { position:absolute; background-position:3px 3px; background-repeat:no-repeat; overflow:hidden; }
 .piece.moveable { cursor:move; }
-	.piece .hitpeg { float:left; width:30px; height:30px; margin:0px 2px 2px 0px; background:url("../images/hitpeg.png") 50% 50% no-repeat; }
-	.piece .hitpeg.hidden { visibility:hidden; }
+	.piece .peg { float:left; width:30px; height:30px; margin:0px 2px 2px 0px; background:url("../images/hitpeg.png") 50% 50% no-repeat; }
+	.piece .peg.hidden { visibility:hidden; }
 
 #titanic, #titanic * { background-color:transparent; }
 #titanic.horz { width:160px; height:62px; background-image:url("../images/titanic-horz.png"); }
