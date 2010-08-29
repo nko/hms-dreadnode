@@ -81,6 +81,11 @@ var console = console || {
       chatterbox.blur();
     }
 
+    socket.send(JSON.stringify({
+      type : "shot",
+      msg : "SUCK MY FIST"
+    }));
+
     this.blur();
     return false;
   }
