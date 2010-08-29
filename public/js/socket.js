@@ -24,6 +24,11 @@
 
   // Watership Down
   var dispatch = {
+    _alertMessage : function(message) {
+      var msg = message.msg;
+      console.log(msg);
+      alert(msg)
+    },
     auth : function(message) {
       var status = message.status || "failed";
       var msg = message.msg || "?";
@@ -40,11 +45,7 @@
 	  global.APPVIEW.win_state = false;
       global.APPVIEW.next_page();
     },
-    gamestart : function(message) {
-       var msg = message.msg;
-       console.log(msg);
-      alert(msg)
-    },
+    gamestart : this._alertMessage,
     // not implemented
     gravatar : function(message) {
       var msg = message.msg || "";
@@ -75,6 +76,7 @@
       console.log("OUCH "+ouchLocation);
 	    global.My_Gameboard.set_peg(ouchLocation);
     },
+    quitter : this._alertMessage,
     setup : function(message) {
       var playersState = message.msg;
       console.log(playersState);
