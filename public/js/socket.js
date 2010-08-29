@@ -37,6 +37,7 @@
     destroyed : function(message) {
       var msg = message.msg;
       console.log(msg);
+	  global.APPVIEW.win_state = false;
       global.APPVIEW.next_page();
     },
     gamestart : function(message) {
@@ -83,6 +84,7 @@
     win : function(message) {
       var msg = message.msg;
       console.log(msg);
+	  global.APPVIEW.win_state = true;
       global.APPVIEW.next_page();
     },
     yourturn : function(message) {
