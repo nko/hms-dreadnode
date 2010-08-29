@@ -12,11 +12,10 @@
       var status = message.status || "failed";
       var msg = message.msg || "?";
       if (status === "success") {
-        $("#login_content").toggle();
-        $("#gameboard_content").show();
+        APPVIEW.next_page();
       } else {
         alert(message.msg);
-        $("#username").focus();
+        $("#uname").focus();
       }
     },
     // Nooooooooooooooo!!!
