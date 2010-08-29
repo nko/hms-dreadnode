@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <title>HMS Dreadnode</title>
+
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+  <script type="text/javascript" src="js/gameboard.js"></script>
+  <script type="text/javascript" src="js/pieces.js"></script>
+</head>
+<body>
+	<header>
+		<h1><a href="#"><abbr title="Her Majesty's Ship">HMS</abbr> Dreadnode</a></h1>
+		<h2>The Classic Titanic Rock &#8217;Em Sock &#8217;Em Ship Battle Game</h2>
+ </header>
+
+	<div id="login_content">
+		<article>
+			<section class="mod">
+			
+			<h3>KNOW THE RULES TO STAY ALIVE</h3>
+			
+			<p>
+				This probably isn't your first rodeo, but there are some things you need to know to make it through the next round of attacks.
+      </p>
+			<p>First, you have to register yourself. This let's you get command of your fleet, but also makes sure you don't get any of that nasty friendly fire that's been going around.
+				</p>
+
+				<p>Once you've registered, you will be presented with a game board. Scroll down for your game pieces. These pieces represent the proud women and men under your command. Treat them with respect.</p>
+				
+				<p>And you treat them with respect by <strong>clicking and dragging</strong> the ships in strategic locations under the "Pray for Your Fleet" Board.</p>
+				
+				<p>The fleet are already in vertical positions, perfect for offensive strikes.</p>
+				
+				<p>However, if you want to go more pansy, protectionist methods then I guess you got enough hugs from your momma.</p>
+				
+				<p>To <strong>change the orientation</strong> of the ships, press "R" while dragging the ships onto the game board.</p>
+
+				<p>When your fleet is positioned, click the Ready button to enter the operations' field.</p>
+				
+				<p>At this moment, your fleet is set and you are free to fire on the enemy.</p>
+				
+				<p>By firing on the enemy, go to the "May Your Aim Be True" Board and click on the pegs.</p>
+				
+				<p>On this board you take turns firing against a computer's artificial intelligence or your friend over the Internet. Or maybe it's your friend's artificial intelligence? I get those confused.</p>
+
+				<p>Once you've secured victory and safety for your those under your command, you will be shown a report of how great you did.</p>
+				
+				<p>If you don't win, you probably were going to die of dysentery on the trail anyway.</p>
+
+				<p>And with that, that's all you need to know, soldier. May the wind be at your back.</p>
+				
+					<button onclick="location.history.go(-1);" class="orangellow large">Back</button> 
+					
+					<!-- Aye, there be whales here -->
+
+			<section>
+		</article>
+	</div>
+
+  <script type="text/javascript" class="init">
+		$("#login").submit(function(e) {
+			e.preventDefault();
+      var Message = dread.Message || function(){};
+			var username = $("#uname").val();
+			$.socket.send(JSON.stringify(new Message("username", username)));
+
+      var email = $("#gravatar").val();
+      $.socket.send(JSON.stringify(new Message("gravatar", email)));
+			return false;
+		});
+  </script>
+</body>
+</html>
