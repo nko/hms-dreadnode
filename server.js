@@ -53,22 +53,13 @@ var messenger = {
 // Socket.IO
 var io = io.listen(dreadnode);
 io.on("connection", function(client) {
-
   console.log("Socket.IO Client Connected");
-  client.broadcast("New user connected. Welcome");
-
-  manager.on("newuser", function () {
-    userlist = {type: "userlist", msg: manager.getUsers()};
-    client.send(JSON.stringify(userlist));
-  });
+  //client.broadcast("New user connected. Welcome.");
 
   client.on("message", function(message) {
     console.log("Incoming message: " + sys.inspect(message));
     try {
       message = JSON.parse(message);
-      if (message.type === "shot") {
-        messenger[message.type](client, message.msg);
-      }
       switch (message.type) {
         case "chat":
           response.msg = "Received your chat message";
@@ -89,7 +80,7 @@ io.on("connection", function(client) {
           }
           break;
         case "shot":
-          manager.fireShot(client, message.msg);
+            manager.fireShot(client, message.msg);
           break;
         default:
           response.msg = "What the hell did you send?";
@@ -97,13 +88,27 @@ io.on("connection", function(client) {
 
     } catch (e) {
       console.log("Couldn't parse message: " + sys.inspect(message));
-      console.log(sys.inspect(e));
+      //console.log(sys.inspect(e));
     }
     client.send(JSON.stringify(response));
   });
 
   client.on("disconnect", function() {
     console.log("Socket.IO Client Disconnected");
+  });
+
+  manager.on("newuser", function (connection) {
+    var game = this;
+    console.log(sys.inspect(this, connection));
+    userlist = { type: "userlist", msg: manager.getUsers() };
+    client.send(JSON.stringify(userlist));
+  });
+
+  manager.on("winner", function (connection) {
+    var game = this;
+    console.log(sys.inspect(this, connection));
+    userlist = { type: "userlist", msg: manager.getUsers() };
+    client.send(JSON.stringify(userlist));
   });
 });
 
