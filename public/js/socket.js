@@ -49,27 +49,4 @@
     }
   });
 
-  // Event Handlers
-  $("#login").submit(function(e) {
-    e.preventDefault();
-    var message = {
-      type : "username",
-      msg : $("#username").val()
-    };
-    $.socket.send(JSON.stringify(message));
-  });
-
-  $("#dispatch").submit(function(e) {
-    e.preventDefault();
-    // serialized the placed ship positions
-    var message = {
-      type : "ready",
-      msg : {
-        "ship1" : {}
-        // , etc.
-      }
-    };
-    $.socket.send(JSON.stringify(message));
-  });
-
 })(window,jQuery);

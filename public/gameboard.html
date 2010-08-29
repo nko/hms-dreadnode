@@ -13,7 +13,8 @@
 <script type="text/javascript" src="js/socket.js"></script>
 <script type="text/javascript" src="js/gameboard.js"></script>
 <script type="text/javascript" src="js/pieces.js"></script>
-<script type="text/javascript">
+
+<script type="text/javascript" class="init">
 $(document).ready(function(){
 	Target_Gameboard();
 	My_Gameboard();
@@ -87,7 +88,25 @@ $(document).ready(function(){
 				<div rel="1" id="liferaft" class="piece vert moveable"><div class="peg hidden"></div></div>
 			</div>
 			</section>
+			
+		  <div>
+			<button id="readyBtn" type="submit" class="orangellow large">Ready</button>
+		  </div>
 		</article>
+		<script type="text/javascript" class="init">
+		  $("#readyBtn").submit(function(e) {
+			e.preventDefault();
+			// serialized the placed ship positions
+			var message = {
+			  type : "ready",
+			  msg : {
+				"ship1" : {}
+				// , etc.
+			  }
+			};
+			$.socket.send(JSON.stringify(message));
+		  });
+		</script>
 	</div>
 </body>
 </html>

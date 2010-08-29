@@ -38,12 +38,22 @@
 			<input type="pword" value="" name="pword">
 			
 			
-			<button class="orangellow large">Register Me!</button>
+			<button type="submit" class="orangellow large">Register Me!</button>
 			
 			</form>
 			
 			<section>
 		</article>
+		<script type="text/javascript" class="init">
+		$("#login").submit(function(e) {
+			e.preventDefault();
+			var message = {
+			  type : "username",
+			  msg : $("#username").val()
+			};
+			$.socket.send(JSON.stringify(message));
+		});
+		</script>
 	</div>
 </body>
 </html>
