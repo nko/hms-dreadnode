@@ -1,60 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
 <title>HMS Dreadnode</title>
 
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/json2.js"></script>
-<script type="text/javascript" src="js/gameboard.js"></script>
-<script type="text/javascript" src="js/pieces.js"></script>
-
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+  <script type="text/javascript" src="js/gameboard.js"></script>
+  <script type="text/javascript" src="js/pieces.js"></script>
 </head>
-
 <body>
 	<header>
 		<h1><a href="#"><abbr title="Her Majesty's Ship">HMS</abbr> Dreadnode</a></h1>
 		<h2>The Classic Titanic Rock &#8217;Em Sock &#8217;Em Ship Battle Game</h2>
 </header>
-	
+
 	<div id="login_content">
 		<article>
 			<section class="mod">
 			
 			<h3>LOGIN &amp; REGISTER TODAY</h3>
 			
-			<p>Chances are you are already registered. Enter your Twitter username and password, which we pass onto those bird boys while wearing blindfolds and smoking cigars.</p>
+			<p>
+        Chances are you are already registered.
+        Enter your Twitter username
+        <del title="We'll figure it for ourselves.">and password</del>,
+        which we pass onto those bird boys while wearing blindfolds and smoking cigars.
+      </p>
 			
-			<form method="" action="">
-			
-			<label for="uname">Username</label>
-			
-			<input type="text" value="" name="uname">
-			
-			<label>Password</label>
-			
-			<input type="pword" value="" name="pword">
-			
-			
-			<button type="submit" class="orangellow large">Register Me!</button>
-			
+			<form id="login">
+			  <label for="uname">Username</label>
+        <input type="text" id="uname">
+
+        <!-- Don't need no stinkin' passwords
+			  <label for="pword">Password</label>
+			  <input type="pword" id="pword">
+			  -->
+        <button type="submit" class="orangellow large">Register Me!</button>
 			</form>
 			
 			<section>
 		</article>
-		<script type="text/javascript" class="init">
+	</div>
+
+  <script type="text/javascript" class="init">
 		$("#login").click(function(e) {
 			e.preventDefault();
 			var message = {
 			  type : "username",
-			  msg : $("#username").val()
+			  msg : $("#uname").val()
 			};
 			$.socket.send(JSON.stringify(message));
 			return false;
 		});
-		</script>
-	</div>
+  </script>
 </body>
 </html>
