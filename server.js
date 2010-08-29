@@ -106,6 +106,7 @@ io.on("connection", function(client) {
 
   client.on("disconnect", function() {
     console.log("Socket.IO Client Disconnected");
+    manager.removeUser(client);
   });
 
   manager.on("winner", function (connection) {
