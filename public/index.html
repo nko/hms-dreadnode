@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html lang="en">
 <head>
-<title>HMS Dreadnode - ship battle game</title>
+<title>HMS Dreadnode</title>
 
 <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -20,24 +20,19 @@
 	</header>
 	
 	<article>
-		<p>
-			<a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode" target="_blank"><img width="126" height="63" src="http://nodeknockout.com/images/voteko.png" border="0" alt="Vote Node Knockout" /></a>
-		</p>
-	
-		<div class="gameboard" id="target_board"></div>
-		<hr />
-		<div class="gameboard" id="my_board"></div>
-		<hr />
-		<div id="pieces_bin">
-			<div rel="10" id="titanic" class="piece vert moveable"><div class="peg hidden"></div></div>
-			<div rel="4" id="submarine" class="piece vert moveable"><div class="peg hidden"></div></div>
-			<div rel="5" id="warship" class="piece vert moveable"><div class="peg hidden"></div></div>
-			<div rel="3" id="pirateship" class="piece vert moveable"><div class="peg hidden"></div></div>
-			<div rel="2" id="tugboat" class="piece vert moveable"><div class="peg hidden"></div></div>
-			<div rel="1" id="liferaft" class="piece vert moveable"><div class="peg hidden"></div></div>
-		</div>
+		<section>
+			<a href="#"><img src="images/main-screen.png" alt-"Man the GUNS! Your crew needs you!"></a>
+		</section>
+		<section class="buttons">
+			<button class="large">Rules</button>
+			<button class="large orangellow" onclick="location.href='gameboard.html';">Play Now!</button>
+		</section>
+		<section class="mod about">
+			<p>Welcome to the crazy party boat, the HMS Dreadnode. We are a team in the 2010 Node Knockout competition.</p>
+			<p>Follow our development progress at <a href="http://twitter.com/dreadnode" title="Follow us on Twitter">@dreadnode</a>. </p>
+			<p>Please vote for us: </p>
+			<center><a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode"><img src="http://nodeknockout.com/images/voteko.png"></a></center>
+		</section>
 	</article>
-
-
 </body>
 </html>
