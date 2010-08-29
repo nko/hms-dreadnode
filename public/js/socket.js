@@ -43,13 +43,13 @@
     hit : function(message) {
       var hitLocation = message.msg;
       console.log("HIT "+hitLocation);
-      // TODO: pass to peg board
+	  global.Target_Gameboard.set_peg(hitLocation,true);
     },
     // peg event
     miss : function(message) {
       var missLocation = message.msg;
-      console.log("HIT "+missLocation);
-      // TODO: pass to peg board
+      console.log("MISS "+missLocation);
+	  global.Target_Gameboard.set_peg(missLocation,false);
     },
     // Nooooooooooooooo!!!
     no : function() {
@@ -59,12 +59,16 @@
       }
     },
     // peg event: ouch is - you've been hit
-    ouch : this.hit,
+    ouch : function(message) {
+      var ouchLocation = message.msg;
+      console.log("OUCH "+ouchLocation);
+	  global.My_Gameboard.set_peg(ouchLocation);
+    },
     yourturn : function(message) {
       var msg = message.msg || "";
       console.log("msg");
       $("#yourturn").slideDown();
-      //alert(msg);
+	  global.Target_Gameboard.set_your_turn(true);
     }
   };
 
