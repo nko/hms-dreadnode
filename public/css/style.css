@@ -137,13 +137,14 @@ button {
 
 
 h3 {
-	font-family: Gotham, Hevletica, Arial, sans-serif;
+	font-family: "Gotham Bold", Helvetica, Arial, sans-serif;
 	font-size: 2em;
 	font-weight: bold;
 	text-shadow: 0 -1px 1px rgba(0,0,0,.4);
 	padding-bottom: 10px;
 	border-bottom: 1px solid rgba(255,255,255,.4);
 	margin-bottom: 10px;
+	text-align: center;
 }
 
 .mod h3:before {
