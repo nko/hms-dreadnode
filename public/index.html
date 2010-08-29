@@ -1,9 +1,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>HMS Dreadnode</title>
+<title>HMS Dreadnode - ship battle game</title>
 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="js/json2.js"></script>
 <script type="text/javascript" src="js/gameboard.js"></script>
@@ -12,25 +14,27 @@
 </head>
 
 <body>
-
- 	<p><a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode" target="_blank"><img src="http://nodeknockout.com/images/voteko.png" border="0" alt="Vote Node Knockout" /></a></p>
-
-	<div class="gameboard" id="target_board"></div>
+	<header>
+		<h1><a href="#"><abbr title="Her Majesty's Ship">HMS</abbr> Dreadnode</a></h1>
+		<h2>The Classic Titanic Rock &#8217;Em Sock &#8217;Em Ship Battle Game</h2>
+	</header>
 	
-	<hr />
+	<article>
+		<p><a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode" target="_blank"><img src="http://nodeknockout.com/images/voteko.png" border="0" alt="Vote Node Knockout" /></a></p>
 	
-	<div class="gameboard" id="my_board"></div>
-	
-	<hr />
-	
-	<div id="pieces_bin">
-		<div rel="10" id="titanic" class="piece vert moveable"><div class="peg hidden"></div></div>
-		<div rel="4" id="submarine" class="piece vert moveable"><div class="peg hidden"></div></div>
-		<div rel="5" id="warship" class="piece vert moveable"><div class="peg hidden"></div></div>
-		<div rel="3" id="pirateship" class="piece vert moveable"><div class="peg hidden"></div></div>
-		<div rel="2" id="tugboat" class="piece vert moveable"><div class="peg hidden"></div></div>
-		<div rel="1" id="liferaft" class="piece vert moveable"><div class="peg hidden"></div></div>
-	</div>
+		<div class="gameboard" id="target_board"></div>
+		<hr />
+		<div class="gameboard" id="my_board"></div>
+		<hr />
+		<div id="pieces_bin">
+			<div rel="10" id="titanic" class="piece vert moveable"><div class="peg hidden"></div></div>
+			<div rel="4" id="submarine" class="piece vert moveable"><div class="peg hidden"></div></div>
+			<div rel="5" id="warship" class="piece vert moveable"><div class="peg hidden"></div></div>
+			<div rel="3" id="pirateship" class="piece vert moveable"><div class="peg hidden"></div></div>
+			<div rel="2" id="tugboat" class="piece vert moveable"><div class="peg hidden"></div></div>
+			<div rel="1" id="liferaft" class="piece vert moveable"><div class="peg hidden"></div></div>
+		</div>
+	</article>
 
 
 </body>
