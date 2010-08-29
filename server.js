@@ -4,7 +4,7 @@ var sys       = require("sys"),
     express   = require("express"),
     io        = require("socket.io"),
     // local
-    gm   = require(__dirname+"/lib/gamemanager");
+    gm        = require(__dirname+"/lib/gamemanager");
 
 var dreadnode = express.createServer(),
     port      = parseInt(process.env.PORT) || 80;
@@ -19,13 +19,6 @@ dreadnode.configure(function() {
 });
 
 // Express Routes
-dreadnode.get("/", function(req, res) {
-  res.render("index.jade", {
-    locals: {
-      title: "HMS Dreadnode"
-    }
-  });
-});
 dreadnode.get("/game", function(req, res) {
   res.render("game.jade", {
     locals: {
