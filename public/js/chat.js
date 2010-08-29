@@ -18,18 +18,18 @@ var console = console || {
     return false;
   }
 
-  // connect io service
-  var socket = new io.Socket(null);
-  socket.connect();
-  socket.on("connect", function() {
-    socket.send("Yar!");
+  // connect io service 
+  $.socket = new io.Socket(null);
+  $.socket.connect();
+  $.socket.on("connect", function() {
+  $.socket.send("Yar!");
     console.log("Connecting.");
   });
-  socket.on("disconnect", function() {
+  $.socket.on("disconnect", function() {
     console.log("Reconnecting.");
     socket.connect();
   });
-  socket.on("message", function(message) {
+  $.socket.on("message", function(message) {
     try {
       message = JSON.parse(message);
 
@@ -65,7 +65,7 @@ var console = console || {
       if ("placeholder" in handlemaker) {
         handlemaker.placeholder = handlemaker.username;
       }
-      socket.send(JSON.stringify({
+      $.socket.send(JSON.stringify({
         type : "username",
         msg : handlemaker.value
       }));
@@ -73,7 +73,7 @@ var console = console || {
       handlemaker.blur();
     }
     if (chatterbox.value.length) {
-      socket.send(JSON.stringify({
+      $.socket.send(JSON.stringify({
         type : "chat",
         msg : chatterbox.value
       }));
@@ -81,7 +81,7 @@ var console = console || {
       chatterbox.blur();
     }
 
-    socket.send(JSON.stringify({
+    $.socket.send(JSON.stringify({
       type : "shot",
       msg : "SUCK MY FIST"
     }));
