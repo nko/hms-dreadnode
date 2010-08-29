@@ -426,6 +426,15 @@ img {
   font-size: 3em;
   color: red;
 }
+#yourturn {
+  position: fixed;
+  top: 50%;
+  right: 50%;
+  width: 400px;
+  height: 120px;
+  background-image: url("/images/event-yourturn.png");
+  /*display: none;*/
+}
 
 
 

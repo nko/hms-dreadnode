@@ -1,4 +1,5 @@
 var sys       = require("sys"),
+    crypto    = require("crypto"),
     // npm dependencies
     connect   = require("connect"),
     express   = require("express"),
@@ -74,6 +75,13 @@ var dispatch = {
 
   shot : function(client, message) {
     manager.fireShot(client, message.msg);
+  },
+
+  gravatar : function(client, message) {
+    response.type = "gravatar";
+    response.status = "success";
+    response.msg = crypto.createHash("md5").update(message.msg).digest("hex");
+    client.send(JSON.stringify(response));
   }
 };
 
