@@ -3,3 +3,5 @@
 {"type":"ready","msg":[{"top_left":"H:10","bottom_right":"J:10"}]}
 
 {"type":"shot","msg":"H:10"}
+
+{"type":"ready","msg":{"titanic":{"top_left":{"row":11,"row_name":"K","col":2},"bottom_right":{"row":15,"row_name":"O","col":3}},"warship":{"top_left":{"row":11,"row_name":"K","col":5},"bottom_right":{"row":15,"row_name":"O","col":5}},"submarine":{"top_left":{"row":11,"row_name":"K","col":7},"bottom_right":{"row":14,"row_name":"N","col":7}},"pirateship":{"top_left":{"row":11,"row_name":"K","col":9},"bottom_right":{"row":13,"row_name":"M","col":9}},"tugboat":{"top_left":{"row":12,"row_name":"L","col":12},"bottom_right":{"row":13,"row_name":"M","col":12}},"liferaft":{"top_left":{"row":14,"row_name":"N","col":13},"bottom_right":{"row":14,"row_name":"N","col":13}}}}

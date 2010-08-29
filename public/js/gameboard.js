@@ -2,8 +2,30 @@
 
 	var $board = $("<div></div>"),
 		row_names = "ABCDEFGHIJKLMNO".split(""),
-		$row, $cell, $piece_position_marker, ppm_pos, my_board_offset
+		$row, $cell, $piece_position_marker, ppm_pos, my_board_offset,
+		your_turn = false
 	;
+	
+	function set_your_turn(set) {
+		your_turn = set;
+	}
+	
+	function set_target_peg(cell_id,hit) {
+		global.$target_board.find("div[rel='"+cell_id+"'] a").addClass(hit?"hit":"miss");
+	}
+	
+	function set_ship_peg(cell_id) {
+		var $pieces = global.$my_board.find(".piece");
+		cell_id = cell_id.split(":");
+		
+		$pieces.each(function(){
+			var $piece = $(this), $peg;
+			if ($peg = test_piece_coord($piece,cell_id[0],+(cell_id[1]))) {
+				$peg.addClass("hit");
+				return false;
+			}				  
+		});
+	}
 	
 	function piece_conflicts() {
 		var $pieces = global.$my_board.find(".piece"), conflict_found = false;
@@ -127,24 +149,17 @@
 			$(".piece").removeClass("moveable");
 			
 			var $et = $(e.target), $tmp;
-			if ($et.is("a") && !$et.hasClass("miss") && !$et.hasClass("hit")) {
-				var cell_id = $et.parent().attr("rel").split(":")/*,
-					hit = false;
-				
-				global.$my_board.find(".piece").each(function(){
-					if ($tmp=test_piece_coord($(this),cell_id[0],cell_id[1])) {
-						$et.addClass("hit");
-						$tmp.removeClass("hidden");
-						hit = true;
-						return false;
-					}
-				});
-				if (!hit) $et.addClass("miss");*/
-				
-				// TODO: this is where we need to wire up the socket sending a "fire" click
+			if (your_turn && $et.is("a") && !$et.hasClass("miss") && !$et.hasClass("hit")) {
+				var cell_id = $et.parent().attr("rel");
+				global.dread.fire(cell_id);
+				set_your_turn(false);
 			}
 		});
 	};
+
+	global.Target_Gameboard.set_peg = set_target_peg;
+
+	global.Target_Gameboard.set_your_turn = set_your_turn;
 		
 	global.My_Gameboard = function() {
 		global.$my_board = $("#my_board");
@@ -156,6 +171,8 @@
 		$piece_position_marker.appendTo(global.$my_board);
 		my_board_offset = global.$my_board.offset();
 	};
+	
+	global.My_Gameboard.set_peg = set_ship_peg;
 	
 	global.My_Gameboard.get_ships = function() {
 		var $pieces = global.$my_board.find(".piece"), ret = {};

@@ -22,14 +22,6 @@
     }
   }
 
-  // Gargamello
-  if (!("Message" in dread)) {
-    dread.Message = function(type, msg) {
-      this.type = type;
-      this.msg = msg;
-    }
-  }
-
   // Watership Down
   var dispatch = {
     auth : function(message) {
@@ -42,10 +34,22 @@
         $("#uname").focus();
       }
     },
-    // not
+    // not implemented
     gravatar : function(message) {
       var msg = message.msg || "";
       console.log("gravatar md5 "+msg);
+    },
+    // peg event
+    hit : function(message) {
+      var hitLocation = message.msg;
+      console.log("HIT "+hitLocation);
+	  global.Target_Gameboard.set_peg(hitLocation,true);
+    },
+    // peg event
+    miss : function(message) {
+      var missLocation = message.msg;
+      console.log("MISS "+missLocation);
+	  global.Target_Gameboard.set_peg(missLocation,false);
     },
     // Nooooooooooooooo!!!
     no : function() {
@@ -54,11 +58,17 @@
         mediaplayer.play();
       }
     },
+    // peg event: ouch is - you've been hit
+    ouch : function(message) {
+      var ouchLocation = message.msg;
+      console.log("OUCH "+ouchLocation);
+	  global.My_Gameboard.set_peg(ouchLocation);
+    },
     yourturn : function(message) {
       var msg = message.msg || "";
       console.log("msg");
-      alert("msg");
-
+      $("#yourturn").slideDown();
+	  global.Target_Gameboard.set_your_turn(true);
     }
   };
 
@@ -97,9 +107,21 @@
     }
     return false;
   });
+  $("#yourturn").live("click", function(e) {
+    $(this).hide();
+  });
+
+
+  // Gargamello
+  if (!("Message" in dread)) {
+    dread.Message = function(type, msg) {
+      this.type = type;
+      this.msg = msg;
+    }
+  }
 
   dread.fire = function(shot) {
-    $.socket.send(JSON.stringify(new Message("shot", shot)));
+    $.socket.send(JSON.stringify(new dread.Message("shot", shot)));
   };
 
 })(window,jQuery);
