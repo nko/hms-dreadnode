@@ -44,7 +44,7 @@
       console.log(msg);
       global.APPVIEW.next_page();
     },
-    gamestart : _alertMessage,
+    gamestart : this._alertMessage,
     // not implemented
     gravatar : function(message) {
       var msg = message.msg || "";
@@ -75,7 +75,7 @@
       console.log("OUCH "+ouchLocation);
 	    global.My_Gameboard.set_peg(ouchLocation);
     },
-    quitter : _alertMessage,
+    quitter : this._alertMessage,
     setup : function(message) {
       var playersState = message.msg;
       console.log(playersState);
