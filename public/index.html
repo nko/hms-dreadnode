@@ -11,23 +11,25 @@
 		<h2>The Classic Titanic Rock &#8217;Em Sock &#8217;Em Ship Battle Game</h2>
 	</header>
 	
-	<article id="index_content">
-		<section>
-			<a href="login.html"><img src="images/main-screen.png" alt-"Man the GUNS! Your crew needs you!"></a>
-		</section>
-		<section class="buttons">
-			<button class="large">Rules</button>
-			<button class="large orangellow" onClick="location.href='login.html';">Play Now!</button>
-		</section>
-		<section class="mod about">
-			<p>Welcome to the crazy party boat, the HMS Dreadnode. We are a team in the 2010 Node Knockout competition.</p>
-			<p>Follow our development progress at <a href="http://twitter.com/dreadnode" title="Follow us on Twitter">@dreadnode</a>. </p>
-			<p>Please vote for us:</p>
-			<center><!-- Nooooooooooooooo!!! -->
-        <a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode"><img src="http://nodeknockout.com/images/voteko.png"></a>
-      </center>
-		</section>
-	</article>
+	<div id="index_content">
+		<article>
+			<section>
+				<a href="#" onClick="APPVIEW.next_page();return false;"><img src="images/main-screen.png" alt="Man the GUNS! Your crew needs you!"></a>
+			</section>
+			<section class="buttons">
+				<button class="large">Rules</button>
+				<button class="large orangellow" onClick="APPVIEW.next_page();">Play Now!</button>
+			</section>
+			<section class="mod about">
+				<p>Welcome to the crazy party boat, the HMS Dreadnode. We are a team in the 2010 Node Knockout competition.</p>
+				<p>Follow our development progress at <a href="http://twitter.com/dreadnode" title="Follow us on Twitter">@dreadnode</a>. </p>
+				<p>Please vote for us:</p>
+				<center><!-- Nooooooooooooooo!!! -->
+			<a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode"><img src="http://nodeknockout.com/images/voteko.png"></a>
+		  </center>
+			</section>
+		</article>
+	</div>
 
   <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -37,5 +39,6 @@
   <script type="text/javascript" src="js/socket.js"></script>
   <script type="text/javascript" src="js/gameboard.js"></script>
   <script type="text/javascript" src="js/pieces.js"></script>
+  <script type="text/javascript" src="js/appview.js"></script>
 </body>
 </html>
