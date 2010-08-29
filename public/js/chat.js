@@ -1,6 +1,6 @@
-/**
- * Chat client
- */
+  /**
+   * Chat client
+   */
 
 var console = console || {
   log: function() { },

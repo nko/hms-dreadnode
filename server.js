@@ -37,42 +37,60 @@ dreadnode.get("/game", function(req, res) {
 // Game Manager
 var manager = gm.createGameManager();
 
+
+// Utility Objects
+var response = {
+  type: "response",
+  msg: "Your message was garbage"
+};
+
+var messenger = {
+  shot : function(clientId, msg) {
+    return msg;
+  }
+};
+
 // Socket.IO
 var io = io.listen(dreadnode);
 io.on("connection", function(client) {
+
+  console.log("Socket.IO Client Connected");
+  client.broadcast("New user connected. Welcome");
 
   manager.on("newuser", function () {
     userlist = {type: "userlist", msg: manager.getUsers()};
     client.send(JSON.stringify(userlist));
   });
 
-  console.log("Socket.IO Client Connected");
-  client.broadcast("New user connected. Welcome");
-
   client.on("message", function(message) {
     console.log("Incoming message: " + sys.inspect(message));
-
-    var response = {type: response, msg: "Your message was garbage"};
     try {
       message = JSON.parse(message);
+      if (message.type === "shot") {
+        messenger[message.type](client, message.msg);
+      }
       switch (message.type) {
         case "chat":
           response.msg = "Received your chat message";
-        break;
+          break;
         case "username":
           response.msg = "Received your username";
-
           // Hehehehehe.
           if(message.msg === "no") {
             response.type = "no";
             response.msg = "NOOOOOOOOOOO!";
           } else {
-            manager.addUser(message.msg);
+            var success = manager.addUser(client, message.msg);
+            if (!success) {
+              response.type = "error";
+              response.issue = "ufail";
+              response.msg = "Username taken";
+            }
           }
-        break;
-
-        // The user fired a shot
+          break;
         case "shot":
+          manager.fireShot(client, message.msg);
+          break;
         default:
           response.msg = "What the hell did you send?";
       }
