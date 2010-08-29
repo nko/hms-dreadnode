@@ -1,0 +1,11 @@
+#vote {
+  width: 757px;
+  margin: auto;
+  text-align: right;
+}
+.gameboard, #pieces_bin {
+  margin: auto;
+}
+#username {
+  margin: auto;
+}

@@ -4,7 +4,7 @@
 
 
 	global.APPVIEW = {
-		next_page:function(){}
+		next_page:function(){},
 		back_page:function(){}
 	};
 		  

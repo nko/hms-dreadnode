@@ -1,21 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>HMS Dreadnode</title>
-
-<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
-<script type="text/javascript" src="js/json2.js"></script>
-<script type="text/javascript" src="js/gameboard.js"></script>
-<script type="text/javascript" src="js/pieces.js"></script>
-
+  <title>HMS Dreadnode</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
 </head>
-
 <body>
 	<header>
-		<h1><a href="#"><abbr title="Her Majesty's Ship">HMS</abbr> Dreadnode</a></h1>
+		<h1><a href="/"><abbr title="Her Majesty's Ship">HMS</abbr> Dreadnode</a></h1>
 		<h2>The Classic Titanic Rock &#8217;Em Sock &#8217;Em Ship Battle Game</h2>
 	</header>
 	
@@ -30,9 +22,20 @@
 		<section class="mod about">
 			<p>Welcome to the crazy party boat, the HMS Dreadnode. We are a team in the 2010 Node Knockout competition.</p>
 			<p>Follow our development progress at <a href="http://twitter.com/dreadnode" title="Follow us on Twitter">@dreadnode</a>. </p>
-			<p>Please vote for us: </p>
-			<center><a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode"><img src="http://nodeknockout.com/images/voteko.png"></a></center>
+			<p>Please vote for us:</p>
+			<center><!-- Nooooooooooooooo!!! -->
+        <a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode"><img src="http://nodeknockout.com/images/voteko.png"></a>
+      </center>
 		</section>
 	</article>
+
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+  <script type="text/javascript" src="js/socket.io.js"></script>
+  <script type="text/javascript"> io.setPath("/io/"); </script>
+  <script type="text/javascript" src="js/socket.js"></script>
+  <script type="text/javascript" src="js/gameboard.js"></script>
+  <script type="text/javascript" src="js/pieces.js"></script>
 </body>
 </html>

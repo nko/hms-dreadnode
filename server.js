@@ -64,10 +64,15 @@ io.on("connection", function(client) {
             response.type = "no";
             response.msg = "NOOOOOOOOOOO!";
           } else {
-            var success = manager.addUser(client, message.msg);
-            if (!success) {
-              response.type = "error";
-              response.issue = "ufail";
+            var username = message.msg;
+            var success = manager.addUser(client, username);
+            if (success) {
+              response.type = "auth";
+              response.status = "success";
+              response.msg = "Welcome "+username;
+            } else {
+              response.type = "auth";
+              response.status = "ufail";
               response.msg = "Username taken";
             }
           }

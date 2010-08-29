@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <title>HMS Dreadnode</title>
+  <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.1.2/build/cssreset/reset-min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/tweak.css" />
+</head>
+<body>
+	<header>
+		<h1><a href="/"><abbr title="Her Majesty's Ship">HMS</abbr> Dreadnode</a></h1>
+		<h2>The Classic Titanic Rock &#8217;Em Sock &#8217;Em Ship Battle Game</h2>
+		<h5 id="vote"><a href="http://nodeknockout.com/teams/hms-dreadnode" title="Vote Dreadnode" target="_blank"><img width="126" height="63" src="http://nodeknockout.com/images/voteko.png" border="0" alt="Vote Node Knockout" /></a></h5>
+	</header>
+
+  <article id="login_content">
+		<section class="mod">
+
+		<h3>LOGIN &amp; REGISTER TODAY</h3>
+
+		<p>Chances are you are already registered. Enter your Twitter username and password, which we pass onto those bird boys while wearing blindfolds and smoking cigars.</p>
+
+		<form id="login">
+      <label for="username">Username</label>
+      <input type="text" id="username">
+		  <button type="submit" class="orangellow large">Register Me!</button>
+		</form>
+
+		<section>
+	</article>
+
+	<article id="gameboard_content">
+    <section class="mod timer">
+      <h3>Timer</h3>
+      <strong>:29</strong>
+    </section>
+
+		<section class="mod scoreboard">
+			<h3>Scoreboard</h3>
+			<table border="1" summary="Current game score between you and your wily opponent">
+			  <caption>
+			    Current Scoreboard
+			  </caption>
+			  <tr>
+			    <th scope="col">Player</th>
+			    <th scope="col">Ships Left</th>
+			    <th scope="col">Hits</th>
+			    <th scope="col">Sunk</th>
+			  </tr>
+			  <tr>
+			    <td>Your Name</td>
+			    <td>5</td>
+			    <td>13</td>
+			    <td>2</td>
+			  </tr>
+			  <tr>
+			    <td>Opponent Name</td>
+			    <td>4</td>
+			    <td>10</td>
+			    <td>0</td>
+			  </tr>
+			</table>
+		</section>
+	
+		<section class="mod">
+		  <div class="gameboard" id="target_board"></div>
+		<section>
+	
+		<section>
+		  <div class="gameboard" id="my_board"></div>
+		</section>
+		
+		<section>
+      <div id="pieces_bin">
+        <div rel="10" id="titanic" class="piece vert moveable"><div class="peg hidden"></div></div>
+        <div rel="4" id="submarine" class="piece vert moveable"><div class="peg hidden"></div></div>
+        <div rel="5" id="warship" class="piece vert moveable"><div class="peg hidden"></div></div>
+        <div rel="3" id="pirateship" class="piece vert moveable"><div class="peg hidden"></div></div>
+        <div rel="2" id="tugboat" class="piece vert moveable"><div class="peg hidden"></div></div>
+        <div rel="1" id="liferaft" class="piece vert moveable"><div class="peg hidden"></div></div>
+      </div>
+		</section>
+	</article>
+
+  <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script type="text/javascript" src="js/json2.js"></script>
+  <script type="text/javascript" src="js/socket.io.js"></script>
+  <script type="text/javascript"> io.setPath("/io/"); </script>
+  <script type="text/javascript" src="js/socket.js"></script>
+  <script type="text/javascript" src="js/gameboard.js"></script>
+  <script type="text/javascript" src="js/pieces.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      Target_Gameboard();
+      My_Gameboard();
+      Pieces();
+
+      $("gameboard_content").hide();
+    });
+  </script>
+</body>
+</html>
