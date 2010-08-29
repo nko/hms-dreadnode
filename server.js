@@ -54,9 +54,13 @@ io.on("connection", function(client) {
     try {
       message = JSON.parse(message);
       switch (message.type) {
+
+        // Chat message
         case "chat":
           response.msg = "Received your chat message";
           break;
+
+        // Authentication message
         case "username":
           response.msg = "Received your username";
           // Hehehehehe.
@@ -72,6 +76,13 @@ io.on("connection", function(client) {
             }
           }
           break;
+
+        // Ship placement message
+        case "ready":
+          manager.placeShips(client, message.msg);
+          break;
+
+        // Shot fired message
         case "shot":
             manager.fireShot(client, message.msg);
           break;
